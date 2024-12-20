@@ -11,7 +11,7 @@ function validateEgyptianPhoneNumber($phoneNumber) {
     }
 }
 function validateEmail($email) {
-    $pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    $pattern = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$";
 
     if (preg_match($pattern, $email)) {
         return true; 

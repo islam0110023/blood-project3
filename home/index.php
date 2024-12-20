@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -22,8 +26,12 @@
             <li><a href="about.php">About Us</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="donor.php">Donor List</a></li>
-          
+            <?php if (!isset($_SESSION['user'])): ?>
             <li><a href="login_signup.php">Login/ Sign Up</a></li>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['user'])): ?>
+            <li><a href="../profile/profile.php">Profile</a></li>
+            <?php endif; ?>
         </ul>
     </div>
 
