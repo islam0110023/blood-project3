@@ -20,7 +20,7 @@
 <div class="side-menu" id="sideMenu">
     <ul>
         <li><a href="settings.php">⚙️ Settings</a></li>
-        <li><a href="index.php">🚪 Logout</a></li>
+        <li><a href="../hospital/logout.php">🚪 Logout</a></li>
     </ul>
     <!-- زر غلق القائمة الجانبية أسفل -->
     <button class="close-btn" onclick="toggleMenu()">☰</button>
