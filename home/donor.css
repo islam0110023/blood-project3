@@ -1,0 +1,110 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 15px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar button {
+    background-color: #fff;
+    color: #ff4d4d;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.hospital-name {
+    cursor: pointer; /* تغيير شكل الماوس */
+    color: #ff4d4d; /* لون مميز لاسم المستشفى */
+    font-weight: bold; /* جعل النص غامق */
+}
+
+.hospital-name:hover {
+    text-decoration: underline; /* إضافة خط تحت النص عند التمرير */
+}
+
+.sidebar button:hover {
+    background-color: #ff6666;
+    color: #fff;
+}
+
+.content {
+    width: 80%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+h1 {
+    color: #ff4d4d;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        box-shadow: none;
+    }
+
+    .content {
+        width: 100%;
+    }
+}

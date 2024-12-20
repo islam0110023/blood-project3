@@ -1,0 +1,166 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.settings-form {
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.settings-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #d32f2f;
+}
+
+/* Input Fields */
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-field {
+    flex: 1;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.input-field input,
+.input-field select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-field input:focus,
+.input-field select:focus {
+    outline: none;
+    border-color: #d32f2f;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Available for Donation Button */
+.donation-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.donation-btn:hover {
+    background-color: #388e3c;
+}
+
+.undo {
+    background-color: #e0e0e0;
+}
+
+.undo:hover {
+    background-color: #bdbdbd;
+}
+
+/* Media Queries for Responsive Design */
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    .settings-form {
+        padding: 1.5rem;  /* Adjust padding for smaller screens */
+        max-width: 90%;  /* Ensure the form takes up more space on smaller screens */
+    }
+
+    .input-group {
+        flex-direction: column;  /* Stack the first and last name inputs */
+    }
+
+    .input-field {
+        margin-bottom: 1rem;  /* Add spacing between stacked inputs */
+    }
+
+    .submit-btn,
+    .donation-btn {
+        font-size: 1rem;  /* Adjust font size for buttons */
+    }
+
+    .submit-btn {
+        padding: 0.8rem;  /* Adjust button padding */
+    }
+
+    .donation-btn {
+        padding: 0.8rem;  /* Adjust button padding */
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    .settings-form h2 {
+        font-size: 1.5rem;  /* Smaller font size for the title */
+    }
+
+    .input-field input,
+    .input-field select {
+        font-size: 0.9rem;  /* Reduce input field font size */
+        padding: 0.7rem;  /* Adjust input padding */
+    }
+
+    .submit-btn {
+        padding: 0.8rem;  /* Adjust button padding */
+        font-size: 1rem;  /* Smaller button text */
+    }
+
+    .donation-btn {
+        padding: 0.8rem;  /* Adjust button padding */
+        font-size: 1rem;  /* Smaller button text */
+    }
+
+    .undo {
+        font-size: 0.9rem;  /* Smaller undo button font size */
+    }
+}

@@ -1,0 +1,98 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #f9f9f9;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .logo h2 {
+    color: #fff;
+    margin: 0;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar ul li a.active, .navbar ul li a:hover {
+    color: #ff4747;
+}
+
+/* Contact Us Section */
+.contact-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.contact-section h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-icons .icon {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.contact-icons .icon:hover {
+    color: #ff4747;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

@@ -1,0 +1,251 @@
+/* Reset default styles */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #141414;
+    color: #fff;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.navbar .logo h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #e50914;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #e50914;
+}
+
+/* Auth Section */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/admin_log.jpeg') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.auth-form {
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.auth-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #e50914;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.auth-form textarea {
+    resize: vertical;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e50914;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-form button:hover {
+    background-color: #d40813;
+}
+
+.auth-form p {
+    margin-top: 20px;
+    color: #ccc;
+}
+
+.auth-form a {
+    color: #e50914;
+    text-decoration: none;
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    padding: 1rem 1rem;
+    background-color: #f9f9f9;
+    color: #d32f2f;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #d32f2f;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #f4f4f4;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 0rem;
+    flex-wrap: wrap;
+}
+
+.contact-icons .icon {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    transition: transform 0.3s, color 0.3s;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-icons .icon i {
+    font-size: 2rem;
+    color: #d32f2f;
+    margin-bottom: 0.5rem;
+}
+
+.contact-icons .icon:hover {
+    transform: scale(1.1);
+    color: #b71c1c;
+}
+
+#contact {
+    background-color: #333;
+
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+    margin-top: 50px;
+    font-size: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+
+    .auth-container {
+        padding: 10px;
+    }
+
+    .auth-form {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-form input,
+    .auth-form select,
+    .auth-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .auth-form button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form h2 {
+        font-size: 1.4rem;
+    }
+
+    .auth-form input,
+    .auth-form select,
+    .auth-form textarea {
+        font-size: 0.85rem;
+    }
+
+    .auth-form button {
+        font-size: 1rem;
+    }
+}

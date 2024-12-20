@@ -1,0 +1,250 @@
+/* Reset default margins and padding */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.967);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.967);
+    width: 100%;
+    padding: 10px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+nav ul {
+    width: 100%;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    color: #b74b4b;
+}
+
+.hidehome {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+
+.navbar .img-user {
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.navbar .sub-menu-wrap {
+    position: absolute;
+    color: black;
+    top: 100%;
+    right: 10%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.navbar .sub-menu-wrap.open-menu {
+    max-height: 400px;
+}
+
+.navbar .sub-menu {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+}
+
+.navbar .hospital-info {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .hospital-info h3 {
+    font-weight: 500;
+}
+
+.navbar .hospital-info img {
+    width: 50px;
+    border-radius: 20%;
+    margin-right: 15px;
+}
+
+.navbar .sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.navbar .sub-menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0px;
+}
+
+.navbar .sub-menu-link p {
+    width: 100%;
+}
+
+.navbar .sub-menu-link img {
+    width: 25px;
+    background: #e5e5e5;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+
+.navbar .sub-menu-link span {
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+
+.navbar .sub-menu-link:hover span {
+    transform: translateX(5px);
+}
+
+.navbar .sub-menu-link:hover p {
+    font-weight: 600;
+}
+
+.navbar .logo h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #b74b4b;
+}
+
+/* Hero Section */
+.hero-section {
+    /* margin-top: 0px; */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('../img/Hospital.jpg') no-repeat center center/cover;
+    background-size: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.hero-overlay h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 5px #b74b4b;
+    margin-bottom: 20px;
+    /* color: #b74b4b; */
+}
+
+.hero-overlay p {
+    font-size: 1.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 5px #b74b4b;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    ul#menu {
+        display: none;
+    }
+
+    ul#menu.show {
+        display: block;
+    }
+
+    .hidehome {
+        display: block;
+    }
+
+    .navbar .img-user {
+        width: 35px;
+        height: 35px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 2%;
+    }
+
+    ul#menu {
+        display: none;
+    }
+
+    ul#menu.show {
+        display: block;
+    }
+
+    .hidehome {
+        display: block;
+    }
+
+    .hero-overlay h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-overlay p {
+        font-size: 0.9rem;
+    }
+}
