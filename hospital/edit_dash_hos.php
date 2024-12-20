@@ -3,6 +3,7 @@ session_start();
 require_once('../database/database.php');
 
 if (isset($_SESSION['hospital'])) {
+    $i=1;
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals');
     $result = $db->select()
         ->where('reg_id', '=', $_SESSION['hospital']['id'])
@@ -95,7 +96,13 @@ if (isset($_SESSION['hospital'])) {
                         <tr>
                             <td><?=$value['Blood_Types'];?></td>
                             <td><?=$value['Quantity']; echo" Units";?></td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
+                            <!-- <td><button class="btn">+</button> <button class="btn">-</button></td> -->
+                            <td>
+                                <form action="updateB.php" method="post">
+                                    <input type="number" name="updateB" placeholder="enter blood" min="0">
+                                    <button type="submit" name="update" value="<?=$i++;?>">update</button>
+                                </form>
+                            </td>
 
                         </tr>
                         <?php endforeach; ?>

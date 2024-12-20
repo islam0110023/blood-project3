@@ -25,12 +25,12 @@ if (isset($_SESSION['hospital'])) {
             ])->where("id", "=", $_SESSION['hospital']['id'])->excute();
 
             $db->commit();
-            echo "<script>alert('Update successfuly');</script>";
             header("location:setting.php");
+            echo "<script>alert('Update successfuly');</script>";
         } catch (Exception $e) {
             $db->rollback();
-            echo "<script>alert('Error');</script>";
             header("location:setting.php");
+            echo "<script>alert('Error');</script>";
         }
 
     }
