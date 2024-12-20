@@ -99,7 +99,7 @@ if (isset($_SESSION['hospital'])) {
                             <!-- <td><button class="btn">+</button> <button class="btn">-</button></td> -->
                             <td>
                                 <form action="updateB.php" method="post">
-                                    <input type="number" name="updateB" placeholder="enter blood" min="0">
+                                    <input type="number" name="updateB" placeholder="enter blood" >
                                     <button type="submit" name="update" value="<?=$i++;?>">update</button>
                                 </form>
                             </td>

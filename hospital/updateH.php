@@ -7,12 +7,15 @@ if (isset($_SESSION['hospital'])) {
         
         
         $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals');
-        if($_POST['cpassword']==$_SESSION['hospital']['Password']){
+        $db->setTable('reg');
+
+        $resultReg=$db->select()->where("id","=",$_SESSION['hospital']['id'])->get();
+        if($_POST['cpassword']== $resultReg['Password']){
 
         try {
             if($_POST['password']==null)
             {
-                $password=$_SESSION['hospital']['Password'];
+                $password=$resultReg['Password'];
             }
             else{
                 $password=$_POST['password'];
