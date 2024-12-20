@@ -11,10 +11,13 @@ if (isset($_SESSION['hospital'])) {
         $db->setTable("hospitals_blood_inventory");
 
         $result2 = $db->select()->where("hospitals_id", "=", $result['hospitals_id'])->andwhere("blood_type_id", "=", $_POST['update'])->get();
-
-
+   $quantity = intval($_POST['updateB']);
+  if($quantity!=null){
         try {
-            $quantity = $_POST['updateB'];
+
+         
+          
+            
             $quantity+=$result2['Quantity'];
 
 
@@ -27,11 +30,26 @@ if (isset($_SESSION['hospital'])) {
             $db->commit();
             header("location:edit_dash_hos.php");
             echo "<script>alert('Update successfuly');</script>";
+        
         } catch (Exception $e) {
             $db->rollback();
-            echo "<script>alert('Error');</script>";
-            header("location:edit_dash_hos.php");
+            // echo "<script>alert('Error');</script>";
+            // header("location:edit_dash_hos.php");
+            echo "<script>
+            alert('error');
+            window.location.href = 'edit_dash_hos.php';
+          </script>";
         }
+    }else{
+        // header("location:edit_dash_hos.php");
+
+        // echo "<script>alert('enter valid number');</script>";
+
+        echo "<script>
+        alert('Enter valid number');
+        window.location.href = 'edit_dash_hos.php';
+      </script>";
+    }
 
     }
 } else {

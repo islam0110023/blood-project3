@@ -115,6 +115,10 @@ if (isset($_SESSION['hospital'])) {
                                 value="<?=$result['location'];?>">
                         </div>
                         <div class="form-group">
+                            <label for="password">Current Password:</label>
+                            <input type="password" id="password" name="cpassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
                             <label for="password">Change Password:</label>
                             <input type="password" id="password" name="password" placeholder="Enter new password">
                         </div>

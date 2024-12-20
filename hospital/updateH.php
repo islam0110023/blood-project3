@@ -3,10 +3,20 @@ session_start();
 require_once('../database/database.php');
 
 if (isset($_SESSION['hospital'])) {
-    if (isset($_POST['submit'])) {   
+    if (isset($_POST['submit']) && $_POST['cpassword']!=null) {   
+        
         
         $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals');
+        if($_POST['cpassword']==$_SESSION['hospital']['Password']){
+
         try {
+            if($_POST['password']==null)
+            {
+                $password=$_SESSION['hospital']['Password'];
+            }
+            else{
+                $password=$_POST['password'];
+            }
             $nameH = $_POST['hospital-name'];
             $emailH = $_POST['email'];
             $phoneH = $_POST['phone'];
@@ -21,7 +31,8 @@ if (isset($_SESSION['hospital'])) {
             ])->where("reg_id", "=", $_SESSION['hospital']['id'])->excute();
             $db->setTable("reg");
             $db->update([
-                "emails" => $emailH
+                "emails" => $emailH,
+                "Password"=>$password
             ])->where("id", "=", $_SESSION['hospital']['id'])->excute();
 
             $db->commit();
@@ -31,8 +42,20 @@ if (isset($_SESSION['hospital'])) {
             $db->rollback();
             header("location:setting.php");
             echo "<script>alert('Error');</script>";
+        }}
+        else{
+            echo "<script>
+        alert('Password not valid');
+        window.location.href = 'setting.php';
+      </script>";
         }
 
+    }
+    else{
+        echo "<script>
+        alert('enter password');
+        window.location.href = 'setting.php';
+      </script>";
     }
 } else {
     echo "<script>alert('Login');</script>";
