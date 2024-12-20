@@ -31,44 +31,7 @@ alert('Transaction failed: " . addslashes("password error") . "');
     }
 }
 
-if (isset($_POST['submit'])) {
-    try {
-        $db->beginTransaction();
-        $db->setTable("reg");
-        $db->insert([
-            "user_names" => $_POST['userName'],
-            "emails" => $_POST['signupEmail'],
-            "password" => $_POST['signupPassword'],
-            "role" => "2"
-        ])->excute();
-        $reg_id = $db->getConnection()->insert_id;
-        $db->setTable("users");
-        $db->insert([
-            "reg_id" => $reg_id,
-            "first_name" => $_POST['firstName'],
-            "last_name" => $_POST['lastName'],
-            "phone_Num" => $_POST['phone'],
-            "location" => $_POST['location'],
-            "blood_type_id" => $_POST['bloodGroup']
 
-        ])->excute();
-        $db->commit();
-    } catch (Exception $e) {
-        $db->rollback();
-        // echo "<script> alert('";
-        // echo "Transaction failed: " . $e->getMessage();
-        // echo "');</script";
-        //echo "<script> alert('Transaction failed: " . $e->getMessage() . "');  </script>";
-        echo "<script>
-        alert('Transaction failed: " . addslashes($e->getMessage()) . "');
-                </script>";
-
-
-        // echo "<script>alert('Transaction failed: error');</script>";
-
-    }
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +83,7 @@ if (isset($_POST['submit'])) {
         <!-- Sign Up Form -->
         <div class="auth-form" id="signupForm" style="display: none;" onsubmit="return validateForm()">
             <h2>Sign Up</h2>
-            <form id="signupFormContent" method="post" action="login_signup.php">
+            <form id="signupFormContent" method="post" action="signup.php">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
 
@@ -131,7 +94,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" id="userName" name="userName" placeholder="Enter your user name" required>
 
                 <label for="signupEmail">Email:</label>
-                <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required>
+                <input type="email" id="signupEmail" name="signupEmail" placeholder="user@example.com" required>
 
                 <label for="signupPassword">Password:</label>
                 <input type="password" id="signupPassword" name="signupPassword" placeholder="Enter your password"
