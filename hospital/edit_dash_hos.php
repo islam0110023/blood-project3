@@ -155,7 +155,7 @@ if (isset($_SESSION['hospital'])) {
                     </tbody>
                 </table>
                 <br>
-                <button class="btn">update</button>
+                <!-- <button class="btn">update</button> -->
             </div>
         </div>
 
