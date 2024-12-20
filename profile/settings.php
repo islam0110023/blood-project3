@@ -1,3 +1,21 @@
+<?php
+session_start();
+require_once('../database/database.php');
+
+
+if(isset($_SESSION['user']))
+{
+    $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
+    
+
+}
+else{
+    echo "<script>
+    alert('Login');
+    window.location.href = '../home/login_signup.php';
+  </script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

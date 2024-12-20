@@ -10,15 +10,6 @@ function validateEgyptianPhoneNumber($phoneNumber) {
         return false; 
     }
 }
-function validateEmail($email) {
-    $pattern = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$";
-
-    if (preg_match($pattern, $email)) {
-        return true; 
-    } else {
-        return false; 
-    }
-}
 $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
 if (isset($_POST['submit'])) {
 
@@ -54,12 +45,7 @@ if (isset($_POST['submit'])) {
         window.location.href = 'login_signup.php';
       </script>";
     }
-    else if (!validateEmail($email)) {
-        echo "<script>
-        alert('Invalid email.');
-        window.location.href = 'login_signup.php';
-      </script>";
-    }
+ 
     
     else {
 
