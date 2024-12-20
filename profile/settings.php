@@ -3,13 +3,17 @@ session_start();
 require_once('../database/database.php');
 
 
-if(isset($_SESSION['user']))
-{
+if (isset($_SESSION['user'])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
-    
+    $db->setTable('reg');
 
-}
-else{
+    $resultReg = $db->select()->where("id", "=", $_SESSION['user']['id'])->get();
+    $db->setTable('users');
+
+    $resultuser = $db->select()->where("reg_id", "=", $_SESSION['user']['id'])->get();
+
+
+} else {
     echo "<script>
     alert('Login');
     window.location.href = '../home/login_signup.php';
@@ -31,76 +35,85 @@ else{
         <div class="settings-form">
             <h2>Account Settings</h2>
 
-            <form action="save_changes.php" method="POST"> <!-- هنا سيكون معالج الـ PHP -->
+            <form action="updateP.php" method="POST"> <!-- هنا سيكون معالج الـ PHP -->
                 <!-- First Name & Last Name Fields -->
                 <div class="input-group">
                     <div class="input-field">
                         <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" name="first-name" value="John" disabled>
+                        <input type="text" id="first-name" name="first-name" value="<?= $resultuser['first_name']; ?>"
+                            >
                     </div>
                     <div class="input-field">
                         <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" name="last-name" value="Doe" disabled>
+                        <input type="text" id="last-name" name="last-name" value="<?= $resultuser['last_name']; ?>"
+                            >
                     </div>
                 </div>
 
                 <!-- Email Address -->
                 <div class="input-field">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" value="john.doe@example.com" disabled>
+                    <input type="email" id="email" name="email" value="<?= $resultReg['emails']; ?>" >
                 </div>
 
                 <!-- Location Field -->
                 <div class="input-field">
                     <label for="location">Location</label>
-                    <input type="text" id="location" name="location" value="New York" disabled>
+                    <input type="text" id="location" name="location" value="<?= $resultuser['location']; ?>" >
                 </div>
 
                 <!-- Phone Number Field -->
                 <div class="input-field">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" value="+1234567890" disabled>
+                    <input type="tel" id="phone" name="phone" value="<?= $resultuser['phone_Num']; ?>" >
                 </div>
 
                 <!-- Blood Type (Pre-filled and not editable) -->
                 <div class="input-field">
                     <label for="blood-type">Blood Type</label>
-                    <select id="blood-type" name="blood-type" disabled>
-                        <option value="A+" selected>A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
+                    
+                    <select id="blood-type" name="blood-type" >
+                        <option value="1" <?php echo $resultuser['blood_type_id'] == '1' ? 'selected' : ''; ?>>A+</option>
+                        <option value="2" <?php echo $resultuser['blood_type_id'] == '2' ? 'selected' : ''; ?>>A-</option>
+                        <option value="3" <?php echo $resultuser['blood_type_id'] == '3' ? 'selected' : ''; ?>>B+</option>
+                        <option value="4" <?php echo $resultuser['blood_type_id'] == '4' ? 'selected' : ''; ?>>B-</option>
+                        <option value="5" <?php echo $resultuser['blood_type_id'] == '5' ? 'selected' : ''; ?>>O+</option>
+                        <option value="6" <?php echo $resultuser['blood_type_id'] == '6' ? 'selected' : ''; ?>>O-</option>
+                        <option value="7" <?php echo $resultuser['blood_type_id'] == '7' ? 'selected' : ''; ?>>AB+</option>
+                        <option value="8" <?php echo $resultuser['blood_type_id'] == '8' ? 'selected' : ''; ?>>AB-</option>
                     </select>
                 </div>
 
                 <!-- Change Password Fields -->
                 <div class="input-field">
                     <label for="current-password">Current Password</label>
-                    <input type="password" id="current-password" name="current-password" placeholder="Enter Current Password" required>
+                    <input type="password" id="current-password" name="cpassword"
+                        placeholder="Enter Current Password" required>
                 </div>
                 <div class="input-field">
                     <label for="new-password">New Password</label>
-                    <input type="password" id="new-password" name="new-password" placeholder="Enter New Password" required>
+                    <input type="password" id="new-password" name="password" placeholder="Enter New Password"
+                        >
                 </div>
-                <div class="input-field">
+                <!-- <div class="input-field">
                     <label for="confirm-password">Confirm New Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm New Password" required>
-                </div>
+                    <input type="password" id="confirm-password" name="cnpassword"
+                        placeholder="Confirm New Password" required>
+                </div> -->
 
                 <!-- Save Changes Button -->
-                <button type="submit" class="submit-btn">Save Changes</button>
+                <button type="submit" class="submit-btn" name="update">Save Changes</button>
 
                 <!-- Available for Donation Section -->
                 <div id="donation-container">
                     <!-- Hidden field for donation status -->
-                    <input type="hidden" id="donation-status" name="donation-status" value="0"> <!-- 0 means not available -->
+                    <!-- <input type="hidden" id="donation-status" name="donation-status" value="0"> -->
+                    <!-- 0 means not available -->
 
-                    <button type="button" id="donation-btn" class="donation-btn" onclick="toggleDonationStatus()">Available for Donation</button>
-                    <button type="button" id="undo-btn" class="donation-btn undo" style="display:none;" onclick="toggleDonationStatus()">Undo</button>
+                    <button type="button" id="donation-btn" class="donation-btn"
+                        onclick="toggleDonationStatus()">Available for Donation</button>
+                    <!-- <button type="button" id="undo-btn" class="donation-btn undo" style="display:none;"
+                        onclick="toggleDonationStatus()">Undo</button> -->
                 </div>
             </form>
         </div>

@@ -1,60 +1,122 @@
-/* General Reset */
-body, html {
+/* Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    color: #333;
-}
-
-.settings-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 40px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.settings-form {
-    background-color: #fff;
+/* Container Styling */
+.settings-container {
     width: 100%;
     max-width: 600px;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    overflow: hidden;
 }
 
+/* Ensure full height for smaller screens */
+@media (max-height: 600px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    .settings-container {
+        min-height: 100vh;
+        margin: 0;
+    }
+}
+
+/* Form Title Styling */
 .settings-form h2 {
     text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+    margin-bottom: 20px;
+    font-size: 2.5rem; /* زيادة الحجم لجعل النص أكثر وضوحًا */
     color: #d32f2f;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px;
+    background-color: #d32f2f;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0; /* إزالة المسافة العلوية الزائدة */
 }
 
-/* Input Fields */
+/* Responsive Adjustments for Title */
+@media (max-width: 1024px) {
+    .settings-form h2 {
+        font-size: 2rem; /* حجم النص أقل قليلاً عند الشاشات المتوسطة */
+    }
+}
+
+@media (max-width: 768px) {
+    .settings-form h2 {
+        font-size: 1.8rem; /* حجم النص أصغر عند الشاشات الصغيرة */
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-form h2 {
+        font-size: 1.6rem; /* تقليل حجم النص عند الشاشات الصغيرة جدًا */
+        margin-bottom: 15px;
+    }
+
+    .settings-container {
+        padding-top: 80px; /* زيادة المسافة العلوية عند الشاشات الصغيرة */
+    }
+}
+
+/* Input Group Styling */
 .input-group {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .input-field {
     flex: 1;
+    min-width: 48%;
+    max-width: 48%;
 }
 
 .input-field label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #555;
 }
 
 .input-field input,
 .input-field select {
     width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
+    padding: 10px;
+    font-size: 0.9rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
@@ -64,103 +126,159 @@ body, html {
     border-color: #d32f2f;
 }
 
+/* Button Styling */
 .submit-btn {
-    display: block;
     width: 100%;
-    padding: 1rem;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
     background-color: #d32f2f;
     color: white;
     border: none;
-    font-size: 1.2rem;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 1rem;
+    transition: background-color 0.3s;
 }
 
 .submit-btn:hover {
     background-color: #b71c1c;
 }
 
-/* Available for Donation Button */
-.donation-btn {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    font-size: 1.2rem;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 1rem;
-}
-
-.donation-btn:hover {
-    background-color: #388e3c;
-}
-
-.undo {
-    background-color: #e0e0e0;
-}
-
-.undo:hover {
-    background-color: #bdbdbd;
-}
-
-/* Media Queries for Responsive Design */
-
-/* For tablets and smaller screens */
-@media (max-width: 768px) {
-    .settings-form {
-        padding: 1.5rem;  /* Adjust padding for smaller screens */
-        max-width: 90%;  /* Ensure the form takes up more space on smaller screens */
-    }
-
+/* Responsive Design */
+@media (max-width: 1024px) {
     .input-group {
-        flex-direction: column;  /* Stack the first and last name inputs */
+        flex-direction: column;
     }
 
     .input-field {
-        margin-bottom: 1rem;  /* Add spacing between stacked inputs */
+        min-width: 100%;
+        max-width: 100%;
     }
 
-    .submit-btn,
-    .donation-btn {
-        font-size: 1rem;  /* Adjust font size for buttons */
+    .settings-container {
+        padding: 15px;
+    }
+
+    .settings-form h2 {
+        font-size: 2rem;
     }
 
     .submit-btn {
-        padding: 0.8rem;  /* Adjust button padding */
-    }
-
-    .donation-btn {
-        padding: 0.8rem;  /* Adjust button padding */
+        font-size: 1rem;
     }
 }
 
-/* For mobile screens */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .settings-container {
+        padding: 15px;
+    }
+
     .settings-form h2 {
-        font-size: 1.5rem;  /* Smaller font size for the title */
+        font-size: 1.8rem;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .settings-container {
+        padding: 10px;
+    }
+
+    .settings-form h2 {
+        font-size: 1.6rem;
+    }
+
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 10px;
     }
 
     .input-field input,
     .input-field select {
-        font-size: 0.9rem;  /* Reduce input field font size */
-        padding: 0.7rem;  /* Adjust input padding */
+        font-size: 0.85rem;
     }
+}
 
-    .submit-btn {
-        padding: 0.8rem;  /* Adjust button padding */
-        font-size: 1rem;  /* Smaller button text */
+
+
+
+
+/* Donation Button Styling */
+.donation-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.donation-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.donation-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+.donation-btn:active {
+    transform: scale(1);
+}
+
+/* Undo Button Styling */
+.undo {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.undo:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+}
+
+.undo:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.6);
+}
+
+.undo:active {
+    transform: scale(1);
+}
+
+/* Responsive Adjustments for Buttons */
+@media (max-width: 768px) {
+    .donation-btn, .undo {
+        font-size: 0.9rem;
+        padding: 10px;
     }
+}
 
-    .donation-btn {
-        padding: 0.8rem;  /* Adjust button padding */
-        font-size: 1rem;  /* Smaller button text */
-    }
-
-    .undo {
-        font-size: 0.9rem;  /* Smaller undo button font size */
+@media (max-width: 480px) {
+    .donation-btn, .undo {
+        font-size: 0.8rem;
+        padding: 8px;
     }
 }
