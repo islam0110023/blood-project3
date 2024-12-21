@@ -5,6 +5,10 @@ $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
 $result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')->where('u.is_doner', '=', true)->show();
 // echo "<pre>";
 // print_r($result);
+$db->setTable('hospitals');
+$resultH = $db->select()->show();
+// echo '<pre>';
+// print_r($resultH);
 
 ?>
 <!DOCTYPE html>
@@ -36,9 +40,42 @@ $result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')
                             <th>Hospital Name</th>
                             <th>Location</th>
                             <th>Contact</th>
+                            <th>INFO</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        foreach ($resultH as $row => $val):
+
+                            ?>
+                            <tr>
+
+                                <td>
+                                    <?=
+                                        $val['name'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['location'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['phone_Num'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <button
+                                        onclick="window.location.href='donor.php?idH=<?= htmlspecialchars($val['hospitals_id']); ?>'">Show</button>
+                                    <!-- <form action="donor.php" method="GET">
+                                        <button type='submit' name='idH' value=''>Show</button>
+                                    </form> -->
+                                </td>
+                            </tr>
+                            <?php
+                        endforeach;
+                        ?>
                         <tr onclick="showBloodBags('City Hospital')">
                             <td>City Hospital</td>
                             <td>Cairo</td>
