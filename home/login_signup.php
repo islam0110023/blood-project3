@@ -120,12 +120,41 @@ alert('Transaction failed: " . addslashes("password error") . "');
                     <option value=8>O-</option>
                 </select>
 
-                <!-- <label for="healthStatus">Health Status:</label>
-                <textarea id="healthStatus" name="healthStatus" rows="4"
-                    placeholder="Describe your current health condition" required></textarea> -->
+                <!-- <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter your location" required> -->
 
                 <label for="location">Location:</label>
-                <input type="text" id="location" name="location" placeholder="Enter your location" required>
+                <input list="locations" id="location" name="location" placeholder="Start typing your location..."
+                    required>
+                <datalist id="locations">
+                    <option value="Cairo">
+                    <option value="Alexandria">
+                    <option value="Giza">
+                    <option value="Qalyubia">
+                    <option value="Sharqia">
+                    <option value="Dakahlia">
+                    <option value="Beheira">
+                    <option value="Kafr El-Sheikh">
+                    <option value="Monufia">
+                    <option value="Gharbia">
+                    <option value="Damietta">
+                    <option value="Port Said">
+                    <option value="Ismailia">
+                    <option value="Suez">
+                    <option value="North Sinai">
+                    <option value="South Sinai">
+                    <option value="Red Sea">
+                    <option value="Minya">
+                    <option value="Beni Suef">
+                    <option value="Fayoum">
+                    <option value="Assiut">
+                    <option value="Sohag">
+                    <option value="Qena">
+                    <option value="Luxor">
+                    <option value="Aswan">
+                    <option value="New Valley">
+                    <option value="Matrouh">
+                </datalist>
 
                 <button type="submit" name="submit">Sign Up</button>
             </form>
