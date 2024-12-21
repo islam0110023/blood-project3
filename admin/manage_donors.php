@@ -29,7 +29,7 @@ else{
             <div class="menu-btn" onclick="toggleSidebar()">☰</div>
             <h2>Blood Donation Admin</h2>
             <ul>
-                <li><a href="#">Dashboard</a></li>
+                <li><a href="admin.php">Dashboard</a></li>
                 <li><a href="manage_hos.php">Manage Hospitals</a></li>
                 <li><a href="manage_donors.php">Manage Donors</a></li>
                 <li><a href="register_hospital.php">Regiser For Hospitals</a></li>
