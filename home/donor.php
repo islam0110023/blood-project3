@@ -1,11 +1,22 @@
+<?php
+// session_start();
+require_once('../database/database.php');
+$db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
+$result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')->where('u.is_doner', '=', true)->show();
+// echo "<pre>";
+// print_r($result);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital and Donor Details</title>
     <link rel="stylesheet" href="donor.css">
 </head>
+
 <body>
     <div class="container">
         <aside class="sidebar">
@@ -45,7 +56,7 @@
             <div id="donorSection" style="display: none;">
                 <h1>Donors</h1>
                 <div class="search-bar">
-                    <input type="text" id="donorSearch" placeholder="Search donors by 	Blood Type...">
+                    <input type="text" id="donorSearch" placeholder="Search donors by Blood Type...">
                 </div>
                 <table>
                     <thead>
@@ -57,12 +68,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Ali Ahmed</td>
-                            <td>+201234567890</td>
-                            <td>Cairo</td>
-                            <td>O+</td>
-                        </tr>
+                        <?php
+                        foreach ($result as $row->$val):
+
+                            ?>
+                            <tr>
+
+                                <td><?php
+                                echo $val['first_name'] . " " . $val['last_name'];
+                                ?></td>
+                                <td>
+                                    <?=
+                                        $val['phone_Num'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['location'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['Blood_Types'];
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php
+                        endforeach;
+                        ?>
                         <tr>
                             <td>Sara Mohamed</td>
                             <td>+201987654321</td>
@@ -88,10 +121,11 @@
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     </div>
 
     <script src="donor.js"></script>
 </body>
+
 </html>
