@@ -3,7 +3,9 @@ session_start();
 require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
-    $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
+    $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
+    $result=$db->select()->join("blood_types bt","bt.id","=","u.blood_type_id")->show();
+
 }
 else{
     echo "<script>alert('Login');</script>";
@@ -54,6 +56,18 @@ else{
                             </tr>
                         </thead>
                         <tbody>
+                        <?php foreach ($result as $key => $value): ?>
+                        <tr>
+                            <td><?=$value['first_name']." ".$value["last_name"];?></td>
+                            <td><?=$value['Blood_Types'];?></td>
+                            <td><?=$value['phone_Num'];?></td>
+                            <td>
+                                <button class="btn">Edit</button> 
+                                <button class="btn">Delete</button>
+                            </td>
+
+                        </tr>
+                        <?php endforeach; ?>
                             <tr>
                                 <td>John Doe</td>
                                 <td>A+</td>
