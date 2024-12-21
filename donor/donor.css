@@ -5,6 +5,7 @@ body {
     padding: 0;
     display: flex;
     height: 100vh;
+    background-color: #f9f9f9;
 }
 
 .container {
@@ -32,36 +33,39 @@ body {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
-}
-.hospital-name {
-    cursor: pointer; /* تغيير شكل الماوس */
-    color: #ff4d4d; /* لون مميز لاسم المستشفى */
-    font-weight: bold; /* جعل النص غامق */
-}
-
-.hospital-name:hover {
-    text-decoration: underline; /* إضافة خط تحت النص عند التمرير */
+    transition: all 0.3s ease;
 }
 
 .sidebar button:hover {
     background-color: #ff6666;
     color: #fff;
+    transform: scale(1.05);
 }
 
 .content {
     width: 80%;
     padding: 20px;
     overflow-y: auto;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 10px;
 }
 
 h1 {
     color: #ff4d4d;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 table, th, td {
@@ -70,12 +74,35 @@ table, th, td {
 
 th, td {
     text-align: left;
-    padding: 8px;
+    padding: 12px;
 }
 
 th {
     background-color: #ff4d4d;
     color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+    color: #333;
+}
+
+td:hover {
+    background-color: #ffe6e6;
+}
+
+/* Highlight rows for hospitals */
+.hospital-name {
+    cursor: pointer;
+    color: #ff4d4d;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.hospital-name:hover {
+    text-decoration: underline;
+    color: #ff6666;
 }
 
 /* Search Bar */
@@ -89,6 +116,13 @@ th {
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #ff4d4d;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
 }
 
 /* Responsive Design */
@@ -102,9 +136,26 @@ th {
         flex-direction: row;
         justify-content: space-around;
         box-shadow: none;
+        padding: 10px;
+    }
+
+    .sidebar button {
+        padding: 8px 15px;
+        font-size: 14px;
     }
 
     .content {
         width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
     }
 }
