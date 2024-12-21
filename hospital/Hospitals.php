@@ -7,9 +7,9 @@ if (isset($_SESSION['hospital'])) {
     $result = $db->select()
         ->where('reg_id', '=', $_SESSION['hospital']['id'])
         ->get();
-        $db->setTable('reg');
+    $db->setTable('reg');
 
-        $resultReg=$db->select()->where("id","=",$_SESSION['hospital']['id'])->get();
+    $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
     // echo '<pre>';
     // print_r($result);
 } else {
@@ -60,7 +60,7 @@ if (isset($_SESSION['hospital'])) {
                     </a>
                     <a href="setting.php" class="sub-menu-link">
                         <img src="../img/setting.png">
-                        <p>Setting & Privacy</p>
+                        <p>Settings & Privacy</p>
                         <span>></span>
                     </a>
                     <a href="logout.php" class="sub-menu-link">

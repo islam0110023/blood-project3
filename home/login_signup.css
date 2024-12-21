@@ -9,13 +9,17 @@ html {
 }
 
 /* Navbar Styling */
-.navbar {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 1rem 2rem;
+.navbar {background-color: rgba(0, 0, 0, 0.967);
+    padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
 .navbar .logo h2 {
@@ -25,25 +29,79 @@ html {
 }
 
 .navbar ul {
-    list-style: none;
-    display: flex;
+    list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar ul.hidden {
+    display: none;
+    /* Hide the navigation links by default */
+}
+
+/* Display the menu when it is active */
+.navbar ul.active {
+    display: flex;
+    /* Show the menu when active */
+    flex-direction: column;
+    /* Stack links vertically */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    padding: 1rem 0;
 }
 
 .navbar ul li {
-    margin: 0 10px;
+    display: inline;
 }
 
 .navbar ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .navbar ul li a:hover {
+    text-decoration: underline;
     color: #e50914;
+}
+
+/* Hamburger Menu (Hidden by Default) */
+.navbar .hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar .hamburger:hover {
+    color: #e50914;
+    transform: scale(1.1);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        /* Hide the navigation links by default */
+    }
+
+    .navbar ul.active {
+        display: flex;
+        /* Show the menu when active */
+    }
+
+    .navbar .hamburger {
+        display: block;
+        /* Show hamburger icon */
+    }
 }
 
 /* Auth Section */

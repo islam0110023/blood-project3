@@ -7,9 +7,9 @@ if (isset($_SESSION['hospital'])) {
     $result = $db->select()
         ->where('reg_id', '=', $_SESSION['hospital']['id'])
         ->get();
-        $db->setTable('reg');
+    $db->setTable('reg');
 
-        $resultReg=$db->select()->where("id","=",$_SESSION['hospital']['id'])->get();
+    $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
     // echo '<pre>';
     // print_r($result);
 } else {
@@ -34,7 +34,7 @@ if (isset($_SESSION['hospital'])) {
     <div class="navbar">
         <nav>
             <div class="logo">
-                <h2>Setting</h2>
+                <h2>Settings</h2>
             </div>
             <img class="img-user" src="../img/hospital-ico.png" alt="user-pic" onclick="toggleMenu2()">
             <div class="sub-menu-wrap" id="subMenu">
@@ -61,7 +61,7 @@ if (isset($_SESSION['hospital'])) {
                     </a>
                     <a href="setting.php" class="sub-menu-link">
                         <img src="../img/setting.png">
-                        <p>Setting & Privacy</p>
+                        <p>Settings & Privacy</p>
                         <span>></span>
                     </a>
                     <a href="logout.php" class="sub-menu-link">
@@ -86,10 +86,10 @@ if (isset($_SESSION['hospital'])) {
                         <h3>Address: <span id="address-view">123 Street, City, Country</span></h3>
                     </div> -->
                     <div class="view-data">
-                        <h3>Hospital Name: <span id="hospital-name-view"><?=$result['name'];?></span></h3>
+                        <h3>Hospital Name: <span id="hospital-name-view"><?= $result['name']; ?></span></h3>
                         <h3>Email: <span id="email-view"><?= $resultReg['emails']; ?></span></h3>
-                        <h3>Phone: <span id="phone-view"><?=$result['phone_Num'];?></span></h3>
-                        <h3>Address: <span id="address-view"><?=$result['location'];?></span></h3>
+                        <h3>Phone: <span id="phone-view"><?= $result['phone_Num']; ?></span></h3>
+                        <h3>Address: <span id="address-view"><?= $result['location']; ?></span></h3>
                     </div>
 
                     <!-- Section for Editing Data -->
@@ -97,22 +97,22 @@ if (isset($_SESSION['hospital'])) {
                         <div class="form-group">
                             <label for="hospital-name">Hospital Name:</label>
                             <input type="text" id="hospital-name" name="hospital-name" placeholder="Enter hospital name"
-                                value="<?=$result['name'];?>">
+                                value="<?= $result['name']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" placeholder="Enter email address"
-                                value="<?= $resultReg['emails']; ?>" >
+                                value="<?= $resultReg['emails']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone:</label>
                             <input type="tel" id="phone" name="phone" placeholder="Enter phone number"
-                                value="<?=$result['phone_Num'];?>">
+                                value="<?= $result['phone_Num']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="address">Address:</label>
                             <input type="text" id="address" name="address" placeholder="Enter address"
-                                value="<?=$result['location'];?>">
+                                value="<?= $result['location']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="password">Current Password:</label>

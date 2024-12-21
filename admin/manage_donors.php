@@ -69,7 +69,7 @@ if (isset($_SESSION["admin"])) {
                                         <div style="display: flex; gap: 10px;">
                                             <form action="updateVD.php" method="post" style="margin: 0;">
                                                 <button type="submit" name="available" value="<?= $value['reg_id']; ?>"
-                                                    class="btn">Edit</button>
+                                                    class="btn">Hide</button>
                                             </form>
                                             <form action="deleteVD.php" method="post" style="margin: 0;">
                                                 <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"
@@ -81,18 +81,7 @@ if (isset($_SESSION["admin"])) {
 
                                 </tr>
                             <?php endforeach; ?>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>A+</td>
-                                <td>+20123456789</td>
-                                <td><button class="btn">Edit</button> <button class="btn">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jane Smith</td>
-                                <td>O-</td>
-                                <td>+20112233445</td>
-                                <td><button class="btn">Edit</button> <button class="btn">Delete</button></td>
-                            </tr>
+
                         </tbody>
                     </table>
                     <!-- <br>

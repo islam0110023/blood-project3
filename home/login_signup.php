@@ -51,11 +51,12 @@ alert('Transaction failed: " . addslashes("password error") . "');
         <div class="logo">
             <h2>Blood Donation</h2>
         </div>
-        <ul>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <ul id="menu">
             <li><a href="index.php">Home</a></li>
             <li><a href="about.php">About Us</a></li>
             <li><a href="#contact">Contact Us</a></li>
-            <li><a href="../donor/donor.php">Donor List</a></li>
+            <li><a href="../donor/donor.php" target="_blank">Donor List</a></li>
 
             <li><a href="login_signup.php">Login/ Sign Up</a></li>
         </ul>
@@ -186,6 +187,10 @@ alert('Transaction failed: " . addslashes("password error") . "');
                 return false; // Prevent form submission
             }
             return true; // Allow form submission
+        }
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('active'); // Toggle the 'active' class to show/hide the menu
         }
     </script>
 

@@ -1,5 +1,19 @@
+<?php
+// session_start();
+require_once('../database/database.php');
+$db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
+$result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')->where('u.is_doner', '=', true)->show();
+// echo "<pre>";
+// print_r($result);
+$db->setTable('hospitals');
+$resultH = $db->select()->show();
+// echo '<pre>';
+// print_r($resultH);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +23,7 @@
         /* إضافة بعض التنسيقات البسيطة هنا إذا لزم الأمر */
     </style>
 </head>
+
 <body>
     <div class="container">
         <aside class="sidebar">
@@ -34,18 +49,34 @@
                     </thead>
                     <tbody id="hospitalTableBody">
                         <!-- بيانات المستشفيات ستملأ هنا بواسطة الباك إند -->
-                        <tr>
-                            <td><input type="text" name="hospital_name_1" id="hospital_name_1" placeholder="Hospital Name" readonly></td>
-                            <td><input type="text" name="hospital_location_1" id="hospital_location_1" placeholder="Location" readonly></td>
-                            <td><input type="text" name="hospital_contact_1" id="hospital_contact_1" placeholder="Contact" readonly></td>
-                            <td><a href="bags.php" target="_blank">View Info</a></td> <!-- رابط جديد -->
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="hospital_name_2" id="hospital_name_2" placeholder="Hospital Name" readonly></td>
-                            <td><input type="text" name="hospital_location_2" id="hospital_location_2" placeholder="Location" readonly></td>
-                            <td><input type="text" name="hospital_contact_2" id="hospital_contact_2" placeholder="Contact" readonly></td>
-                            <td><a href="bags.php" target="_blank">View Info</a></td> <!-- رابط جديد -->
-                        </tr>
+                        <?php
+                        foreach ($resultH as $row => $val):
+
+                            ?>
+                            <tr>
+
+                                <td>
+                                    <?=
+                                        $val['name'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['location'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['phone_Num'];
+                                    ?>
+                                </td>
+                                <td><a href="bags.php?Hid=<?= $val['hospitals_id']; ?>" target="_blank">View Info</a></td>
+                                <!-- رابط جديد -->
+                            </tr>
+                            <?php
+                        endforeach;
+                        ?>
+
                     </tbody>
                 </table>
             </div>
@@ -67,18 +98,34 @@
                     </thead>
                     <tbody id="donorTableBody">
                         <!-- بيانات المتبرعين ستملأ هنا بواسطة الباك إند -->
-                        <tr>
-                            <td><input type="text" name="donor_name_1" id="donor_name_1" placeholder="Donor Name" readonly></td>
-                            <td><input type="text" name="donor_phone_1" id="donor_phone_1" placeholder="Phone" readonly></td>
-                            <td><input type="text" name="donor_governorate_1" id="donor_governorate_1" placeholder="Governorate" readonly></td>
-                            <td><input type="text" name="donor_blood_type_1" id="donor_blood_type_1" placeholder="Blood Type" readonly></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="donor_name_2" id="donor_name_2" placeholder="Donor Name" readonly></td>
-                            <td><input type="text" name="donor_phone_2" id="donor_phone_2" placeholder="Phone" readonly></td>
-                            <td><input type="text" name="donor_governorate_2" id="donor_governorate_2" placeholder="Governorate" readonly></td>
-                            <td><input type="text" name="donor_blood_type_2" id="donor_blood_type_2" placeholder="Blood Type" readonly></td>
-                        </tr>
+                        <?php
+                        foreach ($result as $row => $val):
+
+                            ?>
+                            <tr>
+
+                                <td><?php
+                                echo $val['first_name'] . " " . $val['last_name'];
+                                ?></td>
+                                <td>
+                                    <?=
+                                        $val['phone_Num'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['location'];
+                                    ?>
+                                </td>
+                                <td>
+                                    <?=
+                                        $val['Blood_Types'];
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php
+                        endforeach;
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -93,18 +140,19 @@
         const donorSection = document.getElementById('donorSection');
 
         // عند الضغط على زر المستشفيات
-        hospitalBtn.addEventListener('click', function() {
+        hospitalBtn.addEventListener('click', function () {
             // إخفاء قسم المتبرعين وعرض قسم المستشفيات
             hospitalSection.style.display = 'block';
             donorSection.style.display = 'none';
         });
 
         // عند الضغط على زر المتبرعين
-        donorBtn.addEventListener('click', function() {
+        donorBtn.addEventListener('click', function () {
             // إخفاء قسم المستشفيات وعرض قسم المتبرعين
             donorSection.style.display = 'block';
             hospitalSection.style.display = 'none';
         });
     </script>
 </body>
+
 </html>

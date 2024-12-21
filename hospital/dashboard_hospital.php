@@ -14,7 +14,7 @@ if (isset($_SESSION['hospital'])) {
     // print_r($resultBlood);
     $db->setTable('reg');
 
-    $resultReg=$db->select()->where("id","=",$_SESSION['hospital']['id'])->get();
+    $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
 
 
 } else {
@@ -65,7 +65,7 @@ if (isset($_SESSION['hospital'])) {
                     </a>
                     <a href="setting.php" class="sub-menu-link">
                         <img src="../img/setting.png">
-                        <p>Setting & Privacy</p>
+                        <p>Settings & Privacy</p>
                         <span>></span>
                     </a>
                     <a href="logout.php" class="sub-menu-link">
@@ -91,11 +91,12 @@ if (isset($_SESSION['hospital'])) {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($resultBlood as $key => $value): ?>
-                        <tr>
-                            <td><?=$value['Blood_Types'];?></td>
-                            <td><?=$value['Quantity']; echo " Units";?></td>
-                        </tr>
+                        <?php foreach ($resultBlood as $key => $value): ?>
+                            <tr>
+                                <td><?= $value['Blood_Types']; ?></td>
+                                <td><?= $value['Quantity'];
+                                echo " Units"; ?></td>
+                            </tr>
                         <?php endforeach; ?>
 
                         <!-- <tr>

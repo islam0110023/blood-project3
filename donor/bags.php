@@ -1,11 +1,24 @@
+<?php
+require_once('../database/database.php');
+
+if (isset($_GET["Hid"])) {
+    $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals_blood_inventory HI');
+    $Hid = $_GET["Hid"];
+    $result = $db->select()->join('blood_types bt', 'bt.id', '=', 'HI.blood_type_id')->where('HI.hospitals_id', '=', $Hid)->show();
+    // echo '<pre>';
+    // print_r($result);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Bags Availability</title>
     <link rel="stylesheet" href="bags.css">
 </head>
+
 <body>
     <div class="container">
         <div class="content">
@@ -19,41 +32,35 @@
                 </thead>
                 <tbody>
                     <!-- البيانات ستملأ هنا من الباك إند -->
-                    <tr>
-                        <td>A+</td>
-                        <td><input type="text" name="blood_status_1" id="blood_status_1" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>A-</td>
-                        <td><input type="text" name="blood_status_2" id="blood_status_2" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>B+</td>
-                        <td><input type="text" name="blood_status_3" id="blood_status_3" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>B-</td>
-                        <td><input type="text" name="blood_status_4" id="blood_status_4" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>O+</td>
-                        <td><input type="text" name="blood_status_5" id="blood_status_5" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>O-</td>
-                        <td><input type="text" name="blood_status_6" id="blood_status_6" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>AB+</td>
-                        <td><input type="text" name="blood_status_7" id="blood_status_7" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>AB-</td>
-                        <td><input type="text" name="blood_status_8" id="blood_status_8" placeholder="Available/Unavailable" readonly></td>
-                    </tr>
+                    <?php
+                    foreach ($result as $rows => $val):
+
+                        ?>
+                        <tr>
+
+                            <td>
+                                <?=
+                                    $val['Blood_Types'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($val['Quantity'] > 0) {
+                                    echo 'Available';
+                                } else {
+                                    echo 'Not Available';
+                                }
+                                ?>
+                            </td>
+
+                        </tr>
+                        <?php
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
 </body>
+
 </html>

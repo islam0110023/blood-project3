@@ -3,7 +3,7 @@ session_start();
 require_once('../database/database.php');
 
 if (isset($_SESSION['hospital'])) {
-    $i=1;
+    $i = 1;
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals');
     $result = $db->select()
         ->where('reg_id', '=', $_SESSION['hospital']['id'])
@@ -15,7 +15,7 @@ if (isset($_SESSION['hospital'])) {
     // print_r($resultBlood);
     $db->setTable('reg');
 
-    $resultReg=$db->select()->where("id","=",$_SESSION['hospital']['id'])->get();
+    $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
 
 } else {
     echo "<script>alert('Login');</script>";
@@ -65,7 +65,7 @@ if (isset($_SESSION['hospital'])) {
                     </a>
                     <a href="setting.php" class="sub-menu-link">
                         <img src="../img/setting.png">
-                        <p>Setting & Privacy</p>
+                        <p>Settings & Privacy</p>
                         <span>></span>
                     </a>
                     <a href="logout.php" class="sub-menu-link">
@@ -92,19 +92,20 @@ if (isset($_SESSION['hospital'])) {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($resultBlood as $key => $value): ?>
-                        <tr>
-                            <td><?=$value['Blood_Types'];?></td>
-                            <td><?=$value['Quantity']; echo" Units";?></td>
-                            <!-- <td><button class="btn">+</button> <button class="btn">-</button></td> -->
-                            <td>
-                                <form action="updateB.php" method="post">
-                                    <input type="number" name="updateB" placeholder="enter blood" >
-                                    <button type="submit" name="update" value="<?=$i++;?>">update</button>
-                                </form>
-                            </td>
+                        <?php foreach ($resultBlood as $key => $value): ?>
+                            <tr>
+                                <td><?= $value['Blood_Types']; ?></td>
+                                <td><?= $value['Quantity'];
+                                echo " Units"; ?></td>
+                                <!-- <td><button class="btn">+</button> <button class="btn">-</button></td> -->
+                                <td>
+                                    <form action="updateB.php" method="post">
+                                        <input type="number" name="updateB" placeholder="enter blood">
+                                        <button type="submit" name="update" value="<?= $i++; ?>">update</button>
+                                    </form>
+                                </td>
 
-                        </tr>
+                            </tr>
                         <?php endforeach; ?>
                         <!-- <tr>
                             <td>A+</td>

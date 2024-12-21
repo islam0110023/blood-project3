@@ -23,7 +23,7 @@ if (isset($_SESSION['hospital'])) {
                     echo "<script>
             alert('Quantity does not allow');
             window.location.href = 'edit_dash_hos.php';
-          </script>";
+        </script>";
                 } else {
                     $db->beginTransaction();
                     $db->setTable("hospitals_blood_inventory");

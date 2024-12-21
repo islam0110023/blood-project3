@@ -74,18 +74,7 @@ if (isset($_SESSION["admin"])) {
 
                                 </tr>
                             <?php endforeach; ?>
-                            <tr>
-                                <td></td>
-                                <td>City A</td>
-                                <td>A+, O-</td>
-                                <td> <button class="btn">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <td>Hospital B</td>
-                                <td>City B</td>
-                                <td>B+, AB+</td>
-                                <td> <button class="btn">Delete</button></td>
-                            </tr>
+
                         </tbody>
                     </table>
                     <!-- <br>

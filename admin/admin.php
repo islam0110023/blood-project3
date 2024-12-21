@@ -4,6 +4,11 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
+    // $db->setTable('users');
+    $result = $db->select("count(*) Total_D")->where('Role', '=', '2')->andwhere('is_active', '=', '0')->get();
+    $resultH = $db->select("count(*) Total_H")->where('Role', '=', '3')->andwhere('is_active', '=', '0')->get();
+    // echo "<pre>";
+    // print_r($result);
 } else {
     echo "<script>alert('Login');</script>";
     header("location:../home/login_signup.php");
@@ -39,15 +44,17 @@ if (isset($_SESSION["admin"])) {
         <div class="dashboard">
             <div class="card">
                 <h3>Total Donors</h3>
-                <p id="donors-count">0</p> <!-- Total number of donors -->
+                <p id="donors-count"><?= $result['Total_D'];
+                ?></p> <!-- Total number of donors -->
             </div>
             <div class="card">
                 <h3>Total Hospitals</h3>
-                <p id="hospitals-count">0</p> <!-- Total number of hospitals -->
+                <p id="hospitals-count"><?= $resultH['Total_H'];
+                ?></p> <!-- Total number of hospitals -->
             </div>
             <div class="card">
                 <h3>Total Blood Types Available</h3>
-                <p id="blood-types-count">0</p> <!-- Total number of blood types -->
+                <p id="blood-types-count">8</p> <!-- Total number of blood types -->
             </div>
         </div>
     </div>
