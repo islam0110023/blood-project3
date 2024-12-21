@@ -4,10 +4,14 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
-    $result=$db->select()->join("blood_types bt","bt.id","=","u.blood_type_id")->show();
-
-}
-else{
+   // $result = $db->select()->join("reg r", "r.IS_active", "=", 0)->join("blood_types bt", "bt.id", "=", "u.blood_type_id")->where("r.Role", "=", "2")->show();
+    $result = $db->select()
+    ->join("reg r", "r.id", "=", "u.reg_id")
+    ->join("blood_types bt", "bt.id", "=", "u.blood_type_id")  
+    ->where("r.IS_active", "=", 0)
+    ->andwhere("r.Role", "=", 2)
+    ->show();
+} else {
     echo "<script>alert('Login');</script>";
     header("location:../home/login_signup.php");
 }
@@ -56,18 +60,26 @@ else{
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($result as $key => $value): ?>
-                        <tr>
-                            <td><?=$value['first_name']." ".$value["last_name"];?></td>
-                            <td><?=$value['Blood_Types'];?></td>
-                            <td><?=$value['phone_Num'];?></td>
-                            <td>
-                                <button class="btn">Edit</button> 
-                                <button class="btn">Delete</button>
-                            </td>
+                            <?php foreach ($result as $key => $value): ?>
+                                <tr>
+                                    <td><?= $value['first_name'] . " " . $value["last_name"]; ?></td>
+                                    <td><?= $value['Blood_Types']; ?></td>
+                                    <td><?= $value['phone_Num']; ?></td>
+                                    <td>
+                                        <form action="updateVD.php" method="post">
+                                            <button type="submit" name="available" value="<?= $value['reg_id']; ?>"
+                                                class="btn">Edit</button>
+                                        </form>
+                                        <form action="deleteVD.php" method="post">
+                                            <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"
+                                                class="btn">Delete</button>
+                                        </form>
 
-                        </tr>
-                        <?php endforeach; ?>
+                                        <!-- <button class="btn">Delete</button> -->
+                                    </td>
+
+                                </tr>
+                            <?php endforeach; ?>
                             <tr>
                                 <td>John Doe</td>
                                 <td>A+</td>

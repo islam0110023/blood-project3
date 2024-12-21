@@ -4,7 +4,12 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals');
-    $result= $db->select()->show();
+    $result = $db->select()
+    ->join("reg r", "r.id", "=", "hospitals.reg_id")  // الانضمام على الأعمدة الصحيحة
+    ->where("r.IS_active", "=", 0)
+    ->andwhere("r.Role", "=", 3)
+    ->show();
+
 
 }
 else{
@@ -61,7 +66,12 @@ else{
                             <td><?=$value['name'];?></td>
                             <td><?=$value['location'];?></td>
                             <td><?=$value['licenses_number'];?></td>
-                            <td><button class="btn">Edit</button> <button class="btn">Delete</button></td>
+                            <!-- <td><button class="btn">Edit</button> -->
+                             <!-- <button class="btn">Delete</button></td> -->
+                             <form action="deleteHD.php" method="post">
+                                            <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"
+                                                class="btn">Delete</button>
+                                        </form>
 
                         </tr>
                         <?php endforeach; ?>
