@@ -66,7 +66,7 @@ else{
                             <td><?=$value['name'];?></td>
                             <td><?=$value['location'];?></td>
                             <td><?=$value['licenses_number'];?></td>
-                            <!-- <td><button class="btn">Edit</button> -->
+                            <td><button class="btn">Edit</button>
                              <!-- <button class="btn">Delete</button></td> -->
                              <form action="deleteHD.php" method="post">
                                             <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"
