@@ -11,6 +11,7 @@ if (isset($_SESSION['user'])) {
     $db->setTable('users');
 
     $resultuser = $db->select()->where("reg_id", "=", $_SESSION['user']['id'])->get();
+    $_SESSION['is_doner']=$resultuser['is_doner'];
 
 
 } else {
@@ -111,11 +112,14 @@ if (isset($_SESSION['user'])) {
                     <!-- Hidden field for donation status -->
                     <!-- <input type="hidden" id="donation-status" name="donation-status" value="0"> -->
                     <!-- 0 means not available -->
-
-                    <button type="submit" id="donation-btn" class="donation-btn" name="available">Available for
-                        Donation</button>
-                    <!-- <button type="button" id="undo-btn" class="donation-btn undo" style="display:none;"
-                        onclick="toggleDonationStatus()">Undo</button> -->
+                    
+                    <?php if ($_SESSION['is_doner']===0): ?>
+                        <button type="submit" id="donation-btn" class="donation-btn" name="available">Available for
+                            Donation</button>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['is_doner']===1): ?>
+                        <button type="submit" id="undo-btn" class="donation-btn undo" name="available">Undo</button>
+                    <?php endif; ?>
                 </div>
             </form>
         </div>

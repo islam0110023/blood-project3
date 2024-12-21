@@ -28,6 +28,7 @@ if (isset($_SESSION['user'])) {
         $db->update([
             "is_doner" => $is_doner
         ])->where("reg_id", "=", $_SESSION['user']['id'])->excute();
+        $_SESSION['is_doner']=$is_doner;
         echo "<script>
                 alert('Updated successful');
                 window.location.href = 'settings.php';
