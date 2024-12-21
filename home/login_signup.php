@@ -19,11 +19,10 @@ if (isset($_POST['login'])) {
         } else if ($result['Password'] === $password && $result['Role'] == 3) {
             $_SESSION['hospital'] = $result;
             header("location:../hospital/hospitals.php");
-        }else if ($result['Password'] === $password && $result['Role'] == 1) {
+        } else if ($result['Password'] === $password && $result['Role'] == 1) {
             $_SESSION['admin'] = $result;
             header("location:../admin/admin.php");
-        }
-         else {
+        } else {
             echo "<script>
 alert('Transaction failed: " . addslashes("password error") . "');
     </script>";
@@ -57,7 +56,7 @@ alert('Transaction failed: " . addslashes("password error") . "');
             <li><a href="about.php">About Us</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="donor.php">Donor List</a></li>
-        
+
             <li><a href="login_signup.php">Login/ Sign Up</a></li>
         </ul>
     </div>

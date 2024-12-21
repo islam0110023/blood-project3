@@ -3,6 +3,11 @@ session_start();
 require_once('../database/database.php');
 
 if (isset($_SESSION['user'])) {
+    // echo "<script>
+    //     alert('session');
+    //     window.location.href = 'settings.php';
+    // </script>";
+
     if (isset($_POST['update']) && $_POST['cpassword'] != null) {
 
 
@@ -16,7 +21,7 @@ if (isset($_SESSION['user'])) {
                 if ($_POST['password'] == null) {
                     $password = $resultReg['Password'];
                 } else {
-                    
+
                     $password = $_POST['password'];
                 }
                 $namef = $_POST['first-name'];
@@ -24,7 +29,7 @@ if (isset($_SESSION['user'])) {
                 $emailH = $_POST['email'];
                 $phoneH = $_POST['phone'];
                 $addressH = $_POST['location'];
-                $bloodtype=$_POST['blood-type'];
+                $bloodtype = $_POST['blood-type'];
 
                 $db->beginTransaction();
                 $db->setTable("users");
@@ -53,14 +58,14 @@ if (isset($_SESSION['user'])) {
             echo "<script>
         alert('Password not valid');
         window.location.href = 'settings.php';
-      </script>";
+    </script>";
         }
 
     } else {
         echo "<script>
         alert('enter password');
         window.location.href = 'settings.php';
-      </script>";
+    </script>";
     }
 } else {
     echo "<script>alert('Login');</script>";
