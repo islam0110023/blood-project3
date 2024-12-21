@@ -69,7 +69,7 @@ $result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($result as $row->$val):
+                        foreach ($result as $row => $val):
 
                             ?>
                             <tr>
@@ -96,12 +96,6 @@ $result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')
                             <?php
                         endforeach;
                         ?>
-                        <tr>
-                            <td>Sara Mohamed</td>
-                            <td>+201987654321</td>
-                            <td>Alexandria</td>
-                            <td>A+</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
