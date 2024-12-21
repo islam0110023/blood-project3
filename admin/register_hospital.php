@@ -1,3 +1,14 @@
+<?php
+session_start();
+require_once('../database/database.php');
+
+if (isset($_SESSION["admin"])) {
+    $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
+} else {
+    echo "<script>alert('Login');</script>";
+    header("location:../home/login_signup.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -27,9 +38,12 @@
             <!-- Registeration Form -->
             <div class="auth-form" id="RegisterForm">
                 <h2>Register For Hospitals</h2>
-                <form id="RegisterFormContent" onsubmit="return validateForm()">
+                <form id="RegisterFormContent" onsubmit="return validateForm()" method="post" action="signupA.php">
                     <label for="HospitalName">Hospital Name</label>
                     <input type="text" id="HospitalName" name="HospitalName" placeholder="Enter hospital name" required>
+                    
+                    <label for="HospitalUName">Hospital User Name</label>
+                    <input type="text" id="HospitalUName" name="userName" placeholder="Enter hospital user name" required>
 
                     <label for="HospitalEmail">Email</label>
                     <input type="email" id="HospitalEmail" name="HospitalEmail" placeholder="Enter hospital email"
@@ -50,8 +64,12 @@
                     <label for="Hospitallocation">Location</label>
                     <input type="text" id="Hospitallocation" name="Hospitallocation"
                         placeholder="Enter hospital location" required>
+                    
+                    <label for="Hospitallicense">License</label>
+                    <input type="text" id="Hospitallicense" name="Hospitallicense"
+                        placeholder="Enter hospital license" required>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit" name="submit">Submit</button>
                 </form>
             </div>
         </div>

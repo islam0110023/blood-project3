@@ -1,3 +1,15 @@
+<?php
+session_start();
+require_once('../database/database.php');
+
+if (isset($_SESSION["admin"])) {
+    $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
+}
+else{
+    echo "<script>alert('Login');</script>";
+    header("location:../home/login_signup.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="ar">
 
