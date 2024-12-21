@@ -4,13 +4,13 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
-   // $result = $db->select()->join("reg r", "r.IS_active", "=", 0)->join("blood_types bt", "bt.id", "=", "u.blood_type_id")->where("r.Role", "=", "2")->show();
+    // $result = $db->select()->join("reg r", "r.IS_active", "=", 0)->join("blood_types bt", "bt.id", "=", "u.blood_type_id")->where("r.Role", "=", "2")->show();
     $result = $db->select()
-    ->join("reg r", "r.id", "=", "u.reg_id")
-    ->join("blood_types bt", "bt.id", "=", "u.blood_type_id")  
-    ->where("r.IS_active", "=", 0)
-    ->andwhere("r.Role", "=", 2)
-    ->show();
+        ->join("reg r", "r.id", "=", "u.reg_id")
+        ->join("blood_types bt", "bt.id", "=", "u.blood_type_id")
+        ->where("r.IS_active", "=", 0)
+        ->andwhere("r.Role", "=", 2)
+        ->show();
 } else {
     echo "<script>alert('Login');</script>";
     header("location:../home/login_signup.php");
@@ -66,17 +66,18 @@ if (isset($_SESSION["admin"])) {
                                     <td><?= $value['Blood_Types']; ?></td>
                                     <td><?= $value['phone_Num']; ?></td>
                                     <td>
-                                        <form action="updateVD.php" method="post">
-                                            <button type="submit" name="available" value="<?= $value['reg_id']; ?>"
-                                                class="btn">Edit</button>
-                                        </form>
-                                        <form action="deleteVD.php" method="post">
-                                            <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"
-                                                class="btn">Delete</button>
-                                        </form>
-
-                                        <!-- <button class="btn">Delete</button> -->
+                                        <div style="display: flex; gap: 10px;">
+                                            <form action="updateVD.php" method="post" style="margin: 0;">
+                                                <button type="submit" name="available" value="<?= $value['reg_id']; ?>"
+                                                    class="btn">Edit</button>
+                                            </form>
+                                            <form action="deleteVD.php" method="post" style="margin: 0;">
+                                                <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"
+                                                    class="btn">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
+
 
                                 </tr>
                             <?php endforeach; ?>
@@ -94,8 +95,8 @@ if (isset($_SESSION["admin"])) {
                             </tr>
                         </tbody>
                     </table>
-                    <br>
-                    <button class="btn">Add</button>
+                    <!-- <br>
+                    <button class="btn">Add</button> -->
                 </div>
             </div>
         </div>
