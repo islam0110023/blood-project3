@@ -70,6 +70,10 @@ html {
     font-size: 2rem;
     color: #e50914;
     margin-bottom: 20px;
+    /* text-align: left; */
+    margin-right: 380px;
+    /* align-items: left; */
+    /* padding: 20px; */
 }
 
 .dashboard {

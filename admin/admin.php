@@ -4,8 +4,7 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
-}
-else{
+} else {
     echo "<script>alert('Login');</script>";
     header("location:../home/login_signup.php");
 }
@@ -26,7 +25,7 @@ else{
         <div class="menu-btn" onclick="toggleSidebar()">☰</div>
         <h2>Blood Donation Admin</h2>
         <ul>
-            <li><a href="admin.php" onclick="showDashboard()">Dashboard</a></li>
+            <li><a href="admin.php">Dashboard</a></li>
             <li><a href="manage_hos.php">Manage Hospitals</a></li>
             <li><a href="manage_donors.php">Manage Donors</a></li>
             <li><a href="register_hospital.php">Regiser For Hospitals</a></li>
@@ -61,9 +60,9 @@ else{
             menuList.classList.toggle('active');
         }
 
-        function showDashboard() {
-            document.querySelector('.main-content').style.display = 'block';
-        }
+        // function showDashboard() {
+        //     document.querySelector('.main-content').style.display = 'block';
+        // }
     </script>
 </body>
 
