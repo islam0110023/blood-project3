@@ -29,7 +29,7 @@ session_start();
                 <li><a href="login_signup.php">Login/ Sign Up</a></li>
             <?php endif; ?>
             <?php if (isset($_SESSION['user'])): ?>
-                <li><a href="../profile/profile.php">Profile</a></li>
+                <li><a href="../profile/profile.php" target="_blank">Profile</a></li>
             <?php endif; ?>
         </ul>
     </div>

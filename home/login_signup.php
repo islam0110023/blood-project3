@@ -58,7 +58,7 @@ alert('Transaction failed: " . addslashes("password error") . "');
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="../donor/donor.php" target="_blank">Donor List</a></li>
 
-            <li><a href="login_signup.php">Login/ Sign Up</a></li>
+            <li><a href="login_signup.php" target="_blank">Login/ Sign Up</a></li>
         </ul>
     </div>
 
