@@ -69,7 +69,16 @@ if (isset($_SESSION["admin"])) {
                                         <div style="display: flex; gap: 10px;">
                                             <form action="updateVD.php" method="post" style="margin: 0;">
                                                 <button type="submit" name="available" value="<?= $value['reg_id']; ?>"
-                                                    class="btn">Hide</button>
+                                                    class="btn">
+                                                    <?php
+                                                    if ($value['is_doner'] === 0) {
+                                                        echo "Hide";
+                                                    } else {
+                                                        echo "Show";
+                                                    }
+                                                    ?>
+
+                                                </button>
                                             </form>
                                             <form action="deleteVD.php" method="post" style="margin: 0;">
                                                 <button type="submit" name="delete" value="<?= $value['reg_id']; ?>"

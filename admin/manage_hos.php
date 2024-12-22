@@ -5,7 +5,7 @@ require_once('../database/database.php');
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals');
     $result = $db->select()
-        ->join("reg r", "r.id", "=", "hospitals.reg_id")  // الانضمام على الأعمدة الصحيحة
+        ->join("reg r", "r.id", "=", "hospitals.reg_id")  
         ->where("r.IS_active", "=", 0)
         ->andwhere("r.Role", "=", 3)
         ->show();

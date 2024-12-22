@@ -2,11 +2,23 @@
 // session_start();
 require_once('../database/database.php');
 $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
-$result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')->where('u.is_doner', '=', true)->show();
+//$result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')->where('u.is_doner', '=', true)->show();
+$result = $db->select()
+    ->join("reg r", "r.id", "=", "u.reg_id")
+    ->join("blood_types bt", "bt.id", "=", "u.blood_type_id")
+    ->where('u.is_doner', '=', true)
+    ->andwhere("r.IS_active", "=", 0)
+    ->andwhere("r.Role", "=", 2)
+    ->show();
 // echo "<pre>";
 // print_r($result);
 $db->setTable('hospitals');
-$resultH = $db->select()->show();
+// $resultH = $db->select()->show();
+$resultH = $db->select()
+    ->join("reg r", "r.id", "=", "hospitals.reg_id")
+    ->where("r.IS_active", "=", 0)
+    ->andwhere("r.Role", "=", 3)
+    ->show();
 // echo '<pre>';
 // print_r($resultH);
 
