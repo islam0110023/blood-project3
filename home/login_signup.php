@@ -127,8 +127,7 @@ alert('Transaction failed: " . addslashes("password error") . "');
                     <option value=8>O-</option>
                 </select>
 
-                <!-- <label for="location">Location:</label>
-                <input type="text" id="location" name="location" placeholder="Enter your location" required> -->
+            
 
                 <label for="location">Location:</label>
                 <input list="locations" id="location" name="location" placeholder="Start typing your location..."

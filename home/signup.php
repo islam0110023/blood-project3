@@ -12,6 +12,7 @@ function validateEgyptianPhoneNumber($phoneNumber)
   }
 }
 $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
+
 if (isset($_POST['submit'])) {
   $signupEmail = trim($_POST['signupEmail'] ?? '');
   $userName = trim($_POST['userName'] ?? '');
@@ -94,19 +95,11 @@ if (isset($_POST['submit'])) {
       </script>";
     } catch (Exception $e) {
       $db->rollback();
-      // echo "<script> alert('";
-      // echo "Transaction failed: " . $e->getMessage();
-      // echo "');</script";
-      //echo "<script> alert('Transaction failed: " . $e->getMessage() . "');  </script>";
-      // echo "<script>
-      // alert('Transaction failed: " . addslashes($e->getMessage()) . "');
-      //         </script>";
+     
       echo "<script>
                 alert('Register Error');
                 window.location.href = 'login_signup.php';
               </script>";
-
-      // echo "<script>alert('Transaction failed: error');</script>";
 
     }
   }
