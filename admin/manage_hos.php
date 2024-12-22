@@ -54,7 +54,7 @@ if (isset($_SESSION["admin"])) {
                             <tr>
                                 <th>Hospital Name</th>
                                 <th>Location</th>
-                                <th>Available Blood Types</th>
+                                <th>Licenses</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
