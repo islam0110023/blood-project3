@@ -95,12 +95,7 @@ if (isset($_SESSION['user'])) {
                     <label for="new-password">New Password</label>
                     <input type="password" id="new-password" name="password" placeholder="Enter New Password">
                 </div>
-                <!-- <div class="input-field">
-                    <label for="confirm-password">Confirm New Password</label>
-                    <input type="password" id="confirm-password" name="cnpassword"
-                        placeholder="Confirm New Password" required>
-                </div> -->
-
+               
                 <!-- Save Changes Button -->
                 <button type="submit" class="submit-btn" name="update">Save Changes</button>
 
@@ -109,9 +104,7 @@ if (isset($_SESSION['user'])) {
             </form>
             <form action="updateV.php" method="POST">
                 <div id="donation-container">
-                    <!-- Hidden field for donation status -->
-                    <!-- <input type="hidden" id="donation-status" name="donation-status" value="0"> -->
-                    <!-- 0 means not available -->
+                   
                     
                     <?php if ($_SESSION['is_doner']===0): ?>
                         <button type="submit" id="donation-btn" class="donation-btn" name="available">Available for

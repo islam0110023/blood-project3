@@ -15,10 +15,7 @@ function validateEgyptianPhoneNumber($phoneNumber)
 }
 
 if (isset($_SESSION['user'])) {
-    // echo "<script>
-    //     alert('session');
-    //     window.location.href = 'settings.php';
-    // </script>";
+   
 
     if (isset($_POST['update']) && $_POST['cpassword'] != null) {
 
@@ -78,12 +75,13 @@ if (isset($_SESSION['user'])) {
                     ])->where("id", "=", $_SESSION['user']['id'])->excute();
 
                     $db->commit();
-                    header("location:settings.php");
-                    echo "<script>alert('Update successfuly');</script>";
+                    echo "<script>
+                    alert('Update successfuly');
+                    window.location.href = 'settings.php';
+                </script>";
                 } catch (Exception $e) {
                     $db->rollback();
-                    // header("location:settings.php");
-                    // echo "<script>alert('Error');</script>";
+                   
                     echo "<script>
         alert('update error');
         window.location.href = 'settings.php';
@@ -104,7 +102,9 @@ if (isset($_SESSION['user'])) {
     </script>";
     }
 } else {
-    echo "<script>alert('Login');</script>";
-    header("location:../home/login_signup.php");
+    echo "<script>
+    alert('Login');
+    window.location.href = '../home/login_signup.php';
+</script>";
 }
 ?>
