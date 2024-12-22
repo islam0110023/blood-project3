@@ -65,8 +65,8 @@ if (isset($_SESSION["admin"])) {
                     <!-- <label for="Hospitallocation">Location</label>
                     <input type="text" id="Hospitallocation" name="Hospitallocation"
                         placeholder="Enter hospital location" required> -->
-                    <label for="location">Location:</label>
-                    <input list="locations" id="location" name="location" placeholder="Start typing your location..."
+                    <label for="Hospitallocation">Location:</label>
+                    <input list="locations" id="Hospitallocation" name="Hospitallocation" placeholder="Start typing your location..."
                         required>
                     <datalist id="locations">
                         <option value="Cairo">

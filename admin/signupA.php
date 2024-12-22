@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     ) {
         echo "<script>
             alert('Please fill in all fields. Spaces are not allowed.');
-            window.location.href = 'signupA.php';
+            window.location.href = 'register_hospital.php';
         </script>";
         exit;
     }
