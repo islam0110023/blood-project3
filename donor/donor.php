@@ -97,6 +97,7 @@ $resultH = $db->select()
                 <h1>Donors</h1>
                 <div class="search-bar">
                     <input type="text" id="donorSearch" placeholder="Search donors by Blood Type...">
+                    <input type="text" id="donorSearch" placeholder="Search donors by Location...">
                 </div>
                 <table>
                     <thead>
