@@ -55,6 +55,7 @@ if (isset($_SESSION["admin"])) {
                                 <th>Hospital Name</th>
                                 <th>Location</th>
                                 <th>Licenses Number</th>
+                                <th>Phone Number</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -65,6 +66,7 @@ if (isset($_SESSION["admin"])) {
                                     <td><?= $value['name']; ?></td>
                                     <td><?= $value['location']; ?></td>
                                     <td><?= $value['licenses_number']; ?></td>
+                                    <td><?= $value['phone_Num']; ?></td>
                                     <td>
                                         <!-- <button class="btn">Delete</button></td> -->
                                         <form action="deleteHD.php" method="post">
