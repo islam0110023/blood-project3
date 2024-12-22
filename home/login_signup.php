@@ -12,7 +12,14 @@ if (isset($_POST['login'])) {
         echo "<script>
     alert('Transaction failed: " . addslashes("email error") . "');
         </script>";
-    } else {
+    }
+     else if($result['IS_active']===1){
+        echo "<script>
+        alert('The email not found');
+            </script>";
+
+    }
+    else {
         if ($result['Password'] === $password && $result['Role'] == 2) {
             $_SESSION['user'] = $result;
             header("location:index.php");
