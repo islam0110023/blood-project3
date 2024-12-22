@@ -1,13 +1,13 @@
 <?php
-// session_start();
+
 require_once('../database/database.php');
 $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
-//$result = $db->select()->join('blood_types bt', 'bt.id', '=', 'u.blood_type_id')->where('u.is_doner', '=', true)->show();
+
 if (!empty( $_GET['search'])) {
     $search = strtolower($_GET['search']);
 
     $db->setTable('hospitals');
-    // $resultH = $db->select()->show();
+    
     $resultH = $db->select()
         ->join("reg r", "r.id", "=", "hospitals.reg_id")
         ->where("r.IS_active", "=", 0)
@@ -16,14 +16,12 @@ if (!empty( $_GET['search'])) {
         ->show();
 } else {
     $db->setTable('hospitals');
-    // $resultH = $db->select()->show();
+    
     $resultH = $db->select()
         ->join("reg r", "r.id", "=", "hospitals.reg_id")
         ->where("r.IS_active", "=", 0)
         ->andwhere("r.Role", "=", 3)
         ->show();
-    // echo '<pre>';
-    // print_r($resultH);
 }
 if (!empty( $_GET['search1'])  && !empty( $_GET['search2'])) {
     $search1 = $_GET['search1'];
@@ -70,8 +68,6 @@ if (!empty( $_GET['search1'])  && !empty( $_GET['search2'])) {
         ->andwhere("r.IS_active", "=", 0)
         ->andwhere("r.Role", "=", 2)
         ->show();
-    // echo "<pre>";
-// print_r($result);
 }
 ?>
 <!DOCTYPE html>
@@ -164,19 +160,7 @@ if (!empty( $_GET['search1'])  && !empty( $_GET['search2'])) {
             <div id="donorSection" style="display: none;">
                 <h1>Donors</h1>
                 <div class="search-bar">
-                    <!-- <input type="text" id="donorSearch" placeholder="Search donors by Blood Type...">
-                    <input type="text" id="donorSearch" placeholder="Search donors by Location..."> -->
-
-                    <!-- <form action="" method="get" style="display: flex; gap: 10px;">
-                        <input style="margin: 0 10;  width: 400px;" type="text" id="donorSearch" name="search1"
-                            value="<//?= isset($_GET['search1']) ? $_GET['search1'] : ''; ?>"
-                            placeholder="Search donors by Blood Type...">
-                        </form>
-                        <form action="" method="get">
-                        <input style="margin: 0 150px; width: 400px;" type="text" id="donorSearch" name="search2"
-                            value="<//?= isset($_GET['search2']) ? $_GET['search2'] : ''; ?>"
-                            placeholder="Search donors by Location...">
-                    </form> -->
+                 
                     <form action="donor.php" method="get" style="display: flex; gap: 10px;"  onreset="clearInput()">
                         <input type="text" name="search1" id="donorSearch1"
                             value="<?= isset($_GET['search1']) ? $_GET['search1'] : ''; ?>"

@@ -5,8 +5,7 @@ if (isset($_GET["Hid"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'hospitals_blood_inventory HI');
     $Hid = $_GET["Hid"];
     $result = $db->select()->join('blood_types bt', 'bt.id', '=', 'HI.blood_type_id')->where('HI.hospitals_id', '=', $Hid)->show();
-    // echo '<pre>';
-    // print_r($result);
+  
 }
 ?>
 <!DOCTYPE html>
