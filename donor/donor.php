@@ -44,11 +44,10 @@ $resultH = $db->select()->show();
                             <th>Hospital Name</th>
                             <th>Location</th>
                             <th>Contact</th>
-                            <th>Info</th> <!-- العمود الجديد -->
+                            <th>Info</th>
                         </tr>
                     </thead>
                     <tbody id="hospitalTableBody">
-                        <!-- بيانات المستشفيات ستملأ هنا بواسطة الباك إند -->
                         <?php
                         foreach ($resultH as $row => $val):
 

@@ -76,11 +76,11 @@ if (isset($_SESSION['user'])) {
                         <option value="2" <?php echo $resultuser['blood_type_id'] == '2' ? 'selected' : ''; ?>>A-</option>
                         <option value="3" <?php echo $resultuser['blood_type_id'] == '3' ? 'selected' : ''; ?>>B+</option>
                         <option value="4" <?php echo $resultuser['blood_type_id'] == '4' ? 'selected' : ''; ?>>B-</option>
-                        <option value="5" <?php echo $resultuser['blood_type_id'] == '5' ? 'selected' : ''; ?>>O+</option>
-                        <option value="6" <?php echo $resultuser['blood_type_id'] == '6' ? 'selected' : ''; ?>>O-</option>
-                        <option value="7" <?php echo $resultuser['blood_type_id'] == '7' ? 'selected' : ''; ?>>AB+
+                        <option value="5" <?php echo $resultuser['blood_type_id'] == '5' ? 'selected' : ''; ?>>AB+</option>
+                        <option value="6" <?php echo $resultuser['blood_type_id'] == '6' ? 'selected' : ''; ?>>AB-</option>
+                        <option value="7" <?php echo $resultuser['blood_type_id'] == '7' ? 'selected' : ''; ?>>O+
                         </option>
-                        <option value="8" <?php echo $resultuser['blood_type_id'] == '8' ? 'selected' : ''; ?>>AB-
+                        <option value="8" <?php echo $resultuser['blood_type_id'] == '8' ? 'selected' : ''; ?>>O-
                         </option>
                     </select>
                 </div>
