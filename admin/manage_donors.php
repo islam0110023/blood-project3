@@ -70,13 +70,9 @@ if (isset($_SESSION["admin"])) {
                                             <form action="updateVD.php" method="post" style="margin: 0;">
                                                 <button type="submit" name="available" value="<?= $value['reg_id']; ?>"
                                                     class="btn">
-                                                    <?php
-                                                    if ($value['is_doner'] === 0) {
-                                                        echo "Hide";
-                                                    } else {
-                                                        echo "Show";
-                                                    }
-                                                    ?>
+
+                                                    Hide
+
 
                                                 </button>
                                             </form>

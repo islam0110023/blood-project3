@@ -51,8 +51,12 @@ if (isset($_SESSION['user'])) {
                 echo "<script>alert('Update successfuly');</script>";
             } catch (Exception $e) {
                 $db->rollback();
-                header("location:settings.php");
-                echo "<script>alert('Error');</script>";
+                // header("location:settings.php");
+                // echo "<script>alert('Error');</script>";
+                echo "<script>
+        alert('update error');
+        window.location.href = 'settings.php';
+    </script>";
             }
         } else {
             echo "<script>
