@@ -56,6 +56,7 @@ if (isset($_SESSION["admin"])) {
                                 <th>Donor Name</th>
                                 <th>Blood Type</th>
                                 <th>Phone</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -65,6 +66,15 @@ if (isset($_SESSION["admin"])) {
                                     <td><?= $value['first_name'] . " " . $value["last_name"]; ?></td>
                                     <td><?= $value['Blood_Types']; ?></td>
                                     <td><?= $value['phone_Num']; ?></td>
+                                    <td><?php
+                                    if($value['is_doner']===1)
+                                    {
+                                        echo"Available";
+                                    }
+                                    else{
+                                        echo"Not Available";
+                                    }
+                                    ?></td>
                                     <td>
                                         <div style="display: flex; gap: 10px;">
                                             <form action="updateVD.php" method="post" style="margin: 0;">
