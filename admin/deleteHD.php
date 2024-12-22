@@ -18,4 +18,10 @@ if (isset($_SESSION['admin'])) {
     }
 
 }
+else{
+    echo "<script>
+    alert('Login');
+    window.location.href = '../home/login_signup.php';
+</script>";
+}
 ?>

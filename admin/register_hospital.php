@@ -5,8 +5,11 @@ require_once('../database/database.php');
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
 } else {
-    echo "<script>alert('Login');</script>";
-    header("location:../home/login_signup.php");
+        echo "<script>
+        alert('Login');
+        window.location.href = '../home/login_signup.php';
+    </script>";
+   
 }
 ?>
 <!DOCTYPE html>
@@ -62,9 +65,7 @@ if (isset($_SESSION["admin"])) {
                     <input type="tel" id="HospitalNumber" name="HospitalNumber"
                         placeholder="Enter hospital phone number" required>
 
-                    <!-- <label for="Hospitallocation">Location</label>
-                    <input type="text" id="Hospitallocation" name="Hospitallocation"
-                        placeholder="Enter hospital location" required> -->
+                    
                     <label for="Hospitallocation">Location:</label>
                     <input list="locations" id="Hospitallocation" name="Hospitallocation" placeholder="Start typing your location..."
                         required>

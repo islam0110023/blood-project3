@@ -10,12 +10,17 @@ if (isset($_SESSION['admin'])) {
         $db->update([
             "IS_active" => 1
         ])->where("id", "=", $_POST['delete'])->excute();
-       
+
         echo "<script>
                 alert('Delete successful');
                 window.location.href = 'manage_donors.php';
             </script>";
     }
 
+} else {
+    echo "<script>
+    alert('Login');
+    window.location.href = '../home/login_signup.php';
+</script>";
 }
 ?>

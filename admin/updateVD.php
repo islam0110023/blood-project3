@@ -21,21 +21,20 @@ if (isset($_SESSION['admin'])) {
                 </script>";
             
         } else {
-            // $is_doner = false;
+            
                 echo "<script>
                 alert('Already Hide');
                 window.location.href = 'manage_donors.php';
             </script>";
         }
-        // $db->update([
-        //     "is_doner" => $is_doner
-        // ])->where("reg_id", "=", $_POST['available'])->excute();
-        // $_SESSION['is_doner']=$is_doner;
-        // echo "<script>
-        //         alert('Updated successful');
-        //         window.location.href = 'manage_donors.php';
-        //     </script>";
+        
     }
 
+}
+else{
+    echo "<script>
+    alert('Login');
+    window.location.href = '../home/login_signup.php';
+</script>";
 }
 ?>

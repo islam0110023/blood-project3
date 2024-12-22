@@ -4,7 +4,6 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'users u');
-    // $result = $db->select()->join("reg r", "r.IS_active", "=", 0)->join("blood_types bt", "bt.id", "=", "u.blood_type_id")->where("r.Role", "=", "2")->show();
     $result = $db->select()
         ->join("reg r", "r.id", "=", "u.reg_id")
         ->join("blood_types bt", "bt.id", "=", "u.blood_type_id")
@@ -12,8 +11,13 @@ if (isset($_SESSION["admin"])) {
         ->andwhere("r.Role", "=", 2)
         ->show();
 } else {
-    echo "<script>alert('Login');</script>";
-    header("location:../home/login_signup.php");
+   
+    
+        echo "<script>
+        alert('Login');
+        window.location.href = '../home/login_signup.php';
+    </script>";
+    
 }
 ?>
 <!DOCTYPE html>
@@ -99,8 +103,7 @@ if (isset($_SESSION["admin"])) {
 
                         </tbody>
                     </table>
-                    <!-- <br>
-                    <button class="btn">Add</button> -->
+                   
                 </div>
             </div>
         </div>

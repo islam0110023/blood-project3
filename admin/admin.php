@@ -4,14 +4,16 @@ require_once('../database/database.php');
 
 if (isset($_SESSION["admin"])) {
     $db = db::getInstance('localhost', 'root', '', 'blood_donation', 'reg');
-    // $db->setTable('users');
+  
     $result = $db->select("count(*) Total_D")->where('Role', '=', '2')->andwhere('is_active', '=', '0')->get();
     $resultH = $db->select("count(*) Total_H")->where('Role', '=', '3')->andwhere('is_active', '=', '0')->get();
-    // echo "<pre>";
-    // print_r($result);
+    
 } else {
-    echo "<script>alert('Login');</script>";
-    header("location:../home/login_signup.php");
+        echo "<script>
+        alert('Login');
+        window.location.href = '../home/login_signup.php';
+    </script>";
+    
 }
 ?>
 <!DOCTYPE html>
@@ -67,9 +69,7 @@ if (isset($_SESSION["admin"])) {
             menuList.classList.toggle('active');
         }
 
-        // function showDashboard() {
-        //     document.querySelector('.main-content').style.display = 'block';
-        // }
+    
     </script>
 </body>
 
