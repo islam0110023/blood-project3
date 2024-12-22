@@ -146,6 +146,8 @@ nav ul li a:hover {
 
 .navbar .logo h2 {
     margin: 0;
+    width: max-content;
+    
     font-size: 1.8rem;
     color: #b74b4b;
 }

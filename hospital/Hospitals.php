@@ -34,7 +34,7 @@ if (isset($_SESSION['hospital'])) {
     <div class="navbar">
         <nav>
             <div class="logo">
-                <h2>Welcome</h2>
+                <h2>Welcome <?=$result['name'];?></h2>
             </div>
             <div class="hidehome" onclick="toggleMenu()">☰</div>
             <ul id="menu">
