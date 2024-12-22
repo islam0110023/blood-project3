@@ -10,8 +10,7 @@ if (isset($_SESSION['hospital'])) {
     $db->setTable('hospitals_blood_inventory hb');
 
     $resultBlood = $db->select()->join("blood_types bt", "bt.id", "=", "hb.blood_type_id")->where("hospitals_id", "=", $result['hospitals_id'])->show();
-    // echo "<pre>";
-    // print_r($resultBlood);
+  
     $db->setTable('reg');
 
     $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
@@ -99,34 +98,6 @@ if (isset($_SESSION['hospital'])) {
                             </tr>
                         <?php endforeach; ?>
 
-                        <!-- <tr>
-                            <td>B+</td>
-                            <td>10 Units</td>
-                        </tr>
-                        <tr>
-                            <td>O+</td>
-                            <td>10 Units</td>
-                        </tr>
-                        <tr>
-                            <td>A-</td>
-                            <td>10 Units</td>
-                        </tr>
-                        <tr>
-                            <td>B-</td>
-                            <td>10 Units</td>
-                        </tr>
-                        <tr>
-                            <td>O-</td>
-                            <td>10 Units</td>
-                        </tr>
-                        <tr>
-                            <td>AB+</td>
-                            <td>10 Units</td>
-                        </tr>
-                        <tr>
-                            <td>AB-</td>
-                            <td>10 Units</td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>

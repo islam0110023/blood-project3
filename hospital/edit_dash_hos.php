@@ -11,8 +11,7 @@ if (isset($_SESSION['hospital'])) {
     $db->setTable('hospitals_blood_inventory hb');
 
     $resultBlood = $db->select()->join("blood_types bt", "bt.id", "=", "hb.blood_type_id")->where("hospitals_id", "=", $result['hospitals_id'])->show();
-    // echo "<pre>";
-    // print_r($resultBlood);
+    
     $db->setTable('reg');
 
     $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
@@ -97,7 +96,7 @@ if (isset($_SESSION['hospital'])) {
                                 <td><?= $value['Blood_Types']; ?></td>
                                 <td><?= $value['Quantity'];
                                 echo " Units"; ?></td>
-                                <!-- <td><button class="btn">+</button> <button class="btn">-</button></td> -->
+                              
                                 <td>
                                     <form action="updateB.php" method="post">
                                         <input type="number" name="updateB" placeholder="enter blood">
@@ -107,56 +106,11 @@ if (isset($_SESSION['hospital'])) {
 
                             </tr>
                         <?php endforeach; ?>
-                        <!-- <tr>
-                            <td>A+</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-                        </tr>
-                        <tr>
-                            <td>B+</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-                        </tr>
-                        <tr>
-                            <td>O+</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>A-</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>B-</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>O-</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>AB+</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>AB-</td>
-                            <td>10 Units</td>
-                            <td><button class="btn">+</button> <button class="btn">-</button></td>
-
-                        </tr> -->
+                        
                     </tbody>
                 </table>
                 <br>
-                <!-- <button class="btn">update</button> -->
+               
             </div>
         </div>
 

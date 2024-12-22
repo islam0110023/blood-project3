@@ -10,8 +10,7 @@ if (isset($_SESSION['hospital'])) {
     $db->setTable('reg');
 
     $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
-    // echo '<pre>';
-    // print_r($result);
+ 
 } else {
     echo "<script>alert('Login');</script>";
     header("location:../home/login_signup.php");
@@ -79,12 +78,7 @@ if (isset($_SESSION['hospital'])) {
             <form action="updateH.php" method="POST">
                 <div class="form-section">
                     <!-- Section for Viewing Data -->
-                    <!-- <div class="view-data">
-                        <h3>Hospital Name: <span id="hospital-name-view">Hospital A</span></h3>
-                        <h3>Email: <span id="email-view">hospital@example.com</span></h3>
-                        <h3>Phone: <span id="phone-view">123-456-7890</span></h3>
-                        <h3>Address: <span id="address-view">123 Street, City, Country</span></h3>
-                    </div> -->
+                 
                     <div class="view-data">
                         <h3>Hospital Name: <span id="hospital-name-view"><?= $result['name']; ?></span></h3>
                         <h3>Email: <span id="email-view"><?= $resultReg['emails']; ?></span></h3>

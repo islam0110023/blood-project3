@@ -10,8 +10,7 @@ if (isset($_SESSION['hospital'])) {
     $db->setTable('reg');
 
     $resultReg = $db->select()->where("id", "=", $_SESSION['hospital']['id'])->get();
-    // echo '<pre>';
-    // print_r($result);
+    
 } else {
     echo "<script>alert('Login');</script>";
     header("location:../home/login_signup.php");

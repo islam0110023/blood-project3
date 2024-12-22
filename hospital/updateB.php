@@ -32,26 +32,23 @@ if (isset($_SESSION['hospital'])) {
                     ])->where("hospitals_id", "=", $result['hospitals_id'])->andwhere("blood_type_id", "=", $_POST['update'])->excute();
 
                     $db->commit();
-                    header("location:edit_dash_hos.php");
-                    echo "<script>alert('Update successfuly');</script>";
+                    echo "<script>
+                    alert('Update successfuly');
+                    window.location.href = 'edit_dash_hos.php';
+                </script>";
                 }
 
 
 
             } catch (Exception $e) {
                 $db->rollback();
-                // echo "<script>alert('Error');</script>";
-                // header("location:edit_dash_hos.php");
                 echo "<script>
             alert('error');
             window.location.href = 'edit_dash_hos.php';
           </script>";
             }
         } else {
-            // header("location:edit_dash_hos.php");
-
-            // echo "<script>alert('enter valid number');</script>";
-
+          
             echo "<script>
         alert('Enter valid number');
         window.location.href = 'edit_dash_hos.php';
@@ -60,7 +57,9 @@ if (isset($_SESSION['hospital'])) {
 
     }
 } else {
-    echo "<script>alert('Login');</script>";
-    header("location:../home/login_signup.php");
+    echo "<script>
+    alert('Login'');
+    window.location.href = 'edit_dash_hos.php';
+  </script>";
 }
 ?>

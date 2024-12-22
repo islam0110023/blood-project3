@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])) {
         if ($_POST['cpassword'] == $resultReg['Password']) {
             $result = $db->select()->where("emails", "=", $_POST['email'])->andwhere("id", "<>", $_SESSION['user']['id'])->get();
             $db->setTable("users");
-            $result3 = $db->select()->where("phone_Num", "=", $phoneH = $_POST['phone'])->andwhere("reg_id", "<>", $_SESSION['user']['id'])->get();
+            $result3 = $db->select()->where("phone_Num", "=",  $_POST['phone'])->andwhere("reg_id", "<>", $_SESSION['user']['id'])->get();
 
             if (!empty($result)) {
                 echo "<script>
