@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('../database/database.php');
-session_start();
 function validateEgyptianPhoneNumber($phoneNumber)
 {
 

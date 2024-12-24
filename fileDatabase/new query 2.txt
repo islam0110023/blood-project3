@@ -1,0 +1,86 @@
+create database Blood_Donation
+
+
+CREATE TABLE REG (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_names VARCHAR(150) UNIQUE NOT NULL,
+    emails VARCHAR(150) UNIQUE NOT NULL,
+    Password VARCHAR(150) NOT NULL,
+    Role INT NOT NULL,
+    IS_active BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE blood_types (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Blood_Types VARCHAR(4) UNIQUE NOT NULL,
+    binary_id BINARY(4) GENERATED ALWAYS AS (LPAD(CONV(id, 10, 2), 4, '0')) VIRTUAL
+);
+
+CREATE TABLE users (
+    reg_id INT NOT NULL,
+    first_name VARCHAR(150) NOT NULL,
+    last_name VARCHAR(150) NOT NULL,
+    phone_Num VARCHAR(11) UNIQUE NOT NULL,
+    location VARCHAR(200) NOT NULL,
+    is_doner BOOLEAN DEFAULT 0,
+    blood_type_id INT,
+    FOREIGN KEY (reg_id) REFERENCES REG (id),
+    FOREIGN KEY (blood_type_id) REFERENCES blood_types(id)
+);
+
+CREATE TABLE Hospitals (
+    reg_id INT NOT NULL,
+    hospitals_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(150) NOT NULL,
+    location VARCHAR(200) NOT NULL,
+    phone_Num VARCHAR(11) UNIQUE NOT NULL,
+    licenses_number VARCHAR(50) UNIQUE NOT NULL,
+    FOREIGN KEY (reg_id) REFERENCES REG (id) 
+);
+
+CREATE TABLE Hospitals_blood_Inventory (
+    inventory_id INT PRIMARY KEY AUTO_INCREMENT,
+    hospitals_id INT NOT NULL,
+    blood_type_id INT,
+    Quantity INT DEFAULT 0,
+   last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (hospitals_id) REFERENCES Hospitals(hospitals_id),
+    FOREIGN KEY (blood_type_id) REFERENCES blood_types(id)
+);
+
+
+CREATE TABLE Requests (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Recipient_id INT NOT NULL,
+    Donor_id INT NOT NULL,
+    hospitals_id INT NOT NULL,
+    blood_type_id INT,
+    Quantity INT DEFAULT 0,
+    last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Request_date DATE,
+    Statuss VARCHAR(30) DEFAULT 'pending',
+    FOREIGN KEY (Recipient_id) REFERENCES REG (id),
+    FOREIGN KEY (Donor_id) REFERENCES REG (id),
+    FOREIGN KEY (hospitals_id) REFERENCES Hospitals(hospitals_id),
+    FOREIGN KEY (blood_type_id) REFERENCES blood_types(id)
+);
+
+INSERT INTO blood_types (Blood_Types) VALUES
+('A+'),
+('A-'),
+('B+'),
+('B-'),
+('AB+'),
+('AB-'),
+('O+'),
+('O-');
+
+DELIMITER //
+CREATE TRIGGER after_hospital_insert
+AFTER INSERT ON Hospitals
+FOR EACH ROW
+BEGIN
+    INSERT INTO Hospitals_blood_Inventory (hospitals_id, blood_type_id, Quantity)
+    SELECT NEW.hospitals_id, bt.id, 0
+    FROM blood_types bt;
+END //
