@@ -8,7 +8,7 @@
 /* Body Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #141414;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -24,9 +24,9 @@ body {
     width: 100%;
     max-width: 600px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #222;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     margin: 20px auto;
     overflow: hidden;
 }
@@ -48,7 +48,7 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2.5rem; /* زيادة الحجم لجعل النص أكثر وضوحًا */
-    color: #d32f2f;
+    color: #e50914;
     word-wrap: break-word;
     overflow-wrap: break-word;
     line-height: 1.2;
@@ -56,10 +56,10 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 10px;
-    background-color: #d32f2f;
+    background-color: #e50914;
     color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     width: 100%;
     box-sizing: border-box;
     margin-top: 0; /* إزالة المسافة العلوية الزائدة */
@@ -105,9 +105,9 @@ body {
 
 .input-field label {
     display: block;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 5px;
-    color: #555;
+    color: #fff;
 }
 
 .input-field input,
@@ -115,7 +115,7 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 0.9rem;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -123,7 +123,7 @@ body {
 .input-field input:focus,
 .input-field select:focus {
     outline: none;
-    border-color: #d32f2f;
+    border-color: #e50914;
 }
 
 /* Button Styling */
@@ -132,7 +132,7 @@ body {
     padding: 12px;
     font-size: 1rem;
     font-weight: bold;
-    background-color: #d32f2f;
+    background-color: #e50914;
     color: white;
     border: none;
     border-radius: 5px;
@@ -141,7 +141,7 @@ body {
 }
 
 .submit-btn:hover {
-    background-color: #b71c1c;
+    background-color: #e50914;
 }
 
 /* Responsive Design */
@@ -245,7 +245,7 @@ body {
     padding: 12px;
     font-size: 1rem;
     font-weight: bold;
-    background-color: #f44336;
+    background-color: #e50914;
     color: white;
     border: none;
     border-radius: 5px;
@@ -255,7 +255,7 @@ body {
 }
 
 .undo:hover {
-    background-color: #e53935;
+    background-color: #e50914;
     transform: scale(1.05);
 }
 

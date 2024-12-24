@@ -9,19 +9,26 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #d32f2f;
-    color: white;
+    padding: 1.8rem 2rem;
+    background-color: black;
+    color: #b74b4b;
+    z-index: 1000;
+    /* width: 100%; */
 }
 
 .navbar .logo {
-    font-size: 1.5rem;
+    margin: 0;
+    width: max-content;
     font-weight: bold;
+    font-size: 1.8rem;
+    color: #b74b4b;
 }
 
 .menu-icon {
     font-size: 1.8rem;
     cursor: pointer;
+    padding: 10px , 10%;
+
 }
 
 /* Sidebar */
@@ -31,7 +38,8 @@ body {
     right: -250px; /* مغلقة في البداية */
     width: 250px;
     height: 100%;
-    background-color: #ffffff; /* خلفية واضحة */
+    font-weight: bold;
+    background-color: #b74b4b; /* خلفية واضحة */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     transition: right 0.3s ease;
@@ -49,7 +57,7 @@ body {
 }
 
 .side-menu ul li {
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #b74b4b;
 }
 
 .side-menu ul li a {
@@ -57,8 +65,8 @@ body {
     padding: 1rem 1.5rem;
     color: #333; /* نص واضح */
     text-decoration: none;
-    font-size: 1rem;
-    background-color: white; /* تأكد من وضوح الخلفية */
+    font-size: 1.2rem;
+    background-color: #b74b4b; /* تأكد من وضوح الخلفية */
 }
 
 .side-menu ul li a:hover {
@@ -72,7 +80,7 @@ body {
     bottom: 1rem;  /* جعل الزر في الأسفل */
     left: 50%;
     transform: translateX(-50%); /* لتحريك الزر في المنتصف */
-    background-color: #d32f2f;
+    background-color: black;
     color: white;
     border: none;
     font-size: 2rem;  /* حجم أكبر لأيقونة ☰ */
@@ -115,12 +123,17 @@ body {
 }
 
 .hero-section h1 {
-    font-size: 2.5rem;
-    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 5px #b74b4b;
+    margin-bottom: 20px;
 }
 
 .hero-section p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 5px #b74b4b;
 }
 
 /* Responsive Design */

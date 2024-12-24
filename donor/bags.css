@@ -5,7 +5,7 @@ body {
     padding: 0;
     display: flex;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #b9c5d1;
 }
 
 .container {
@@ -19,7 +19,7 @@ body {
 .content {
     width: 80%;
     max-width: 800px;
-    background-color: #fff;
+    background-color: #ffe5e5;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -37,7 +37,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #502b2d;
 }
 
 th, td {
@@ -46,7 +46,7 @@ th, td {
 }
 
 th {
-    background-color: #ff4d4d;
+    background-color: #b74b4b;
     color: white;
 }
 
